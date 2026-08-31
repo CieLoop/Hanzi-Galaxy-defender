@@ -28,7 +28,7 @@ An arcade-style sci-fi typing defense game built with **React**, **TypeScript**,
 
 ---
 
-## 🕹️ How to Play
+## How to Play
 
 1. Select your target **HSK Word Pack** or upload your own custom word list.
 2. Select a **Sector Level** (1 to 5) or jump straight into Sector Alpha.
