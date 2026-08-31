@@ -1,0 +1,6 @@
+{
+  "name": "Hanzi Galaxy Defender",
+  "description": "Defend your galaxy base from falling Hanzi words by typing their Pinyin, with escalating speed levels and custom txt word list imports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
