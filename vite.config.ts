@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/<https://github.com/CieLoop/Hanzi-Galaxy-defender.git>/',
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
