@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GameSettings } from '../types';
-import { X, Volume2, VolumeX, Eye, Sparkles, Sliders, Radio, Music } from 'lucide-react';
+import { X, Volume2, VolumeX, Eye, Sparkles, Sliders, Radio, Music, Lock, KeyRound, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { sounds } from '../utils/audio';
 
 interface SettingsModalProps {
@@ -16,7 +16,46 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   settings,
   onUpdateSettings,
 }) => {
+  const [showPasscodeModal, setShowPasscodeModal] = useState(false);
+  const [passcodeInput, setPasscodeInput] = useState('');
+  const [passcodeError, setPasscodeError] = useState<string | null>(null);
+  const [passcodeSuccess, setPasscodeSuccess] = useState(false);
+
   if (!isOpen) return null;
+
+  const handlePinyinToggleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const willEnable = e.target.checked;
+    if (willEnable) {
+      // Prompt for password
+      setShowPasscodeModal(true);
+      setPasscodeInput('');
+      setPasscodeError(null);
+      setPasscodeSuccess(false);
+    } else {
+      // Turning off requires no password
+      onUpdateSettings({ showPinyinHint: false });
+    }
+  };
+
+  const handleVerifyPasscode = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    const cleanInput = passcodeInput.trim().toLowerCase();
+    const stripped = cleanInput.replace(/[\/\-\.\s]/g, '');
+
+    // Accepts 13/12/2007 or variants like 13-12-2007, 13122007, 13.12.2007
+    if (cleanInput === '13/12/2007' || stripped === '13122007') {
+      setPasscodeSuccess(true);
+      setPasscodeError(null);
+      setTimeout(() => {
+        onUpdateSettings({ showPinyinHint: true });
+        setShowPasscodeModal(false);
+        setPasscodeSuccess(false);
+        setPasscodeInput('');
+      }, 400);
+    } else {
+      setPasscodeError('Incorrect passcode. Hint: Special date (format: dd/mm/yyyy)');
+    }
+  };
 
   return (
     <div id="settings-modal-backdrop" className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-fadeIn">
@@ -147,14 +186,19 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   <Eye className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-white">Show Pinyin Hint</div>
-                  <div className="text-xs text-slate-400">Turn off for hardcore pure Hanzi recognition</div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-semibold text-white">Show Pinyin Hint</span>
+                    <span className="inline-flex items-center gap-1 text-[10px] font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 px-1.5 py-0.5 rounded-full">
+                      <Lock className="w-2.5 h-2.5" /> Passcode
+                    </span>
+                  </div>
+                  <div className="text-xs text-slate-400">Display pinyin directly above incoming Hanzi</div>
                 </div>
               </div>
               <input
                 type="checkbox"
                 checked={settings.showPinyinHint}
-                onChange={(e) => onUpdateSettings({ showPinyinHint: e.target.checked })}
+                onChange={handlePinyinToggleClick}
                 className="w-5 h-5 accent-sky-500 rounded cursor-pointer"
               />
             </div>
@@ -180,6 +224,83 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           </div>
         </div>
 
+        {/* Passcode Unlock Modal Overlay */}
+        {showPasscodeModal && (
+          <div className="absolute inset-0 z-20 bg-slate-950/90 backdrop-blur-md flex flex-col justify-center p-6 animate-fadeIn">
+            <div className="space-y-4 text-center">
+              <div className="mx-auto w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shadow-lg shadow-amber-500/10">
+                <KeyRound className="w-6 h-6" />
+              </div>
+
+              <div>
+                <h3 className="text-base font-bold text-white tracking-wide">Enter Passcode</h3>
+                <p className="text-xs text-slate-400 mt-1">
+                  To turn on Pinyin hints, enter the <span className="text-amber-300 font-semibold">special date</span>.
+                </p>
+                <div className="text-[11px] font-mono text-sky-400 mt-0.5">
+                  Hint: dd/mm/yyyy
+                </div>
+              </div>
+
+              <form onSubmit={handleVerifyPasscode} className="space-y-3">
+                <div className="relative">
+                  <input
+                    type="text"
+                    autoFocus
+                    value={passcodeInput}
+                    onChange={(e) => {
+                      setPasscodeInput(e.target.value);
+                      if (passcodeError) setPasscodeError(null);
+                    }}
+                    placeholder="dd/mm/yyyy"
+                    className={`w-full px-4 py-2.5 rounded-xl bg-slate-900 border text-center font-mono text-sm tracking-wider text-white placeholder:text-slate-600 focus:outline-none transition ${
+                      passcodeError
+                        ? 'border-red-500/80 focus:border-red-500 bg-red-950/10'
+                        : passcodeSuccess
+                        ? 'border-emerald-500/80 focus:border-emerald-500 bg-emerald-950/10'
+                        : 'border-slate-700 focus:border-sky-500'
+                    }`}
+                  />
+                </div>
+
+                {passcodeError && (
+                  <div className="flex items-center justify-center gap-1.5 text-xs text-red-400 font-medium">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>{passcodeError}</span>
+                  </div>
+                )}
+
+                {passcodeSuccess && (
+                  <div className="flex items-center justify-center gap-1.5 text-xs text-emerald-400 font-medium">
+                    <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                    <span>Passcode verified! Pinyin hint unlocked.</span>
+                  </div>
+                )}
+
+                <div className="flex items-center gap-2 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowPasscodeModal(false);
+                      setPasscodeInput('');
+                      setPasscodeError(null);
+                    }}
+                    className="flex-1 py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="flex-1 py-2 px-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold transition shadow-md shadow-sky-600/30"
+                  >
+                    Unlock & Enable
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
         {/* Footer */}
         <div className="p-4 bg-slate-950 border-t border-slate-800 flex justify-end">
           <button
@@ -194,3 +315,4 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     </div>
   );
 };
+

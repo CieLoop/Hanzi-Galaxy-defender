@@ -14,7 +14,7 @@ import {
 } from './types';
 import { PRESET_WORD_PACKS } from './data/words';
 import { LEVEL_CONFIGS } from './data/levels';
-import { cleanPinyin } from './utils/pinyin';
+import { cleanPinyin, isPinyinMatch, isPinyinPrefixMatch } from './utils/pinyin';
 import { sounds } from './utils/audio';
 
 // Components
@@ -424,7 +424,7 @@ export default function App() {
     let foundTargetId: string | null = null;
 
     if (cleanedInput) {
-      const matches = projectiles.filter(p => p.word.pinyinClean.startsWith(cleanedInput));
+      const matches = projectiles.filter(p => isPinyinPrefixMatch(cleanedInput, p.word.pinyinClean, p.word.pinyin));
       if (matches.length > 0) {
         matches.sort((a, b) => b.y - a.y);
         foundTargetId = matches[0].id;
@@ -457,9 +457,7 @@ export default function App() {
     if (!cleaned) return null;
 
     const matching = projectilesRef.current.filter(p => {
-      const pClean = cleanPinyin(p.word.pinyinClean);
-      const pOrigClean = cleanPinyin(p.word.pinyin);
-      return pClean === cleaned || pOrigClean === cleaned;
+      return isPinyinMatch(inputVal, p.word.pinyin, p.word.pinyinClean);
     });
 
     if (matching.length === 0) return null;

@@ -18,8 +18,8 @@ const TONE_MAP: Record<string, string> = {
 };
 
 /**
- * Strips tone marks and converts ü/ǖ to v, removes extra spaces and punctuation
- * e.g. "nǐ hǎo" -> "nihao"
+ * Strips tone marks and converts tone accents, removes extra spaces and punctuation.
+ * e.g. "nǐ hǎo" -> "nihao", "lǚ yóu" -> "lvyou"
  */
 export function cleanPinyin(pinyin: string): string {
   if (!pinyin) return '';
@@ -52,26 +52,76 @@ export function cleanPinyinWithSpaces(pinyin: string): string {
 }
 
 /**
- * Checks whether user input matches a target word's pinyin
- * User might input:
- * 1. "nihao"
- * 2. "ni hao"
- * 3. "ni3hao3"
- * 4. "ni3 hao3"
- * 5. "nǐhǎo"
+ * Checks whether user input matches a target word's pinyin.
+ * Supports:
+ * - Direct match: "nihao" matches "nihao"
+ * - Umlaut flexibility: both 'v' and 'u' match 'ü' (e.g. "lvyou" OR "luyou" for "lǚ yóu", "nver" OR "nuer" for "女儿")
+ * - Tone numbers / spaces stripped gracefully (e.g. "ni3 hao3")
  */
-export function isPinyinMatch(input: string, wordPinyin: string, cleanTarget: string): boolean {
+export function isPinyinMatch(input: string, wordPinyin: string, cleanTarget?: string): boolean {
   const normalizedInput = cleanPinyin(input);
-  if (!normalizedInput || !cleanTarget) return false;
+  if (!normalizedInput) return false;
 
-  if (normalizedInput === cleanTarget) {
+  const targetClean = cleanTarget ? cleanPinyin(cleanTarget) : cleanPinyin(wordPinyin);
+  const targetOrig = cleanPinyin(wordPinyin);
+
+  // 1. Direct equality
+  if (normalizedInput === targetClean || normalizedInput === targetOrig) {
     return true;
   }
 
-  // Also check if input stripped of everything equals cleanTarget
-  const strippedWordPinyin = cleanPinyin(wordPinyin);
-  if (normalizedInput === strippedWordPinyin) {
+  // 2. Flexible 'u' and 'v' equivalence (ü can be typed as either 'v' or 'u')
+  const inputNormU = normalizedInput.replace(/v/g, 'u');
+  const targetCleanNormU = targetClean.replace(/v/g, 'u');
+  const targetOrigNormU = targetOrig.replace(/v/g, 'u');
+
+  if (inputNormU === targetCleanNormU || inputNormU === targetOrigNormU) {
     return true;
+  }
+
+  const inputNormV = normalizedInput.replace(/u/g, 'v');
+  const targetCleanNormV = targetClean.replace(/u/g, 'v');
+  const targetOrigNormV = targetOrig.replace(/u/g, 'v');
+
+  if (inputNormV === targetCleanNormV || inputNormV === targetOrigNormV) {
+    return true;
+  }
+
+  return false;
+}
+
+/**
+ * Checks whether user input matches the prefix of a target word's pinyin.
+ * Supports typing either 'u' or 'v' for umlaut characters.
+ */
+export function isPinyinPrefixMatch(input: string, cleanTarget: string, wordPinyin?: string): boolean {
+  const normalizedInput = cleanPinyin(input);
+  if (!normalizedInput || !cleanTarget) return false;
+
+  const targetClean = cleanPinyin(cleanTarget);
+  const targetOrig = wordPinyin ? cleanPinyin(wordPinyin) : '';
+
+  // Direct prefix
+  if (targetClean.startsWith(normalizedInput) || (targetOrig && targetOrig.startsWith(normalizedInput))) {
+    return true;
+  }
+
+  // Flexible 'u' and 'v' prefix matching (e.g. typing 'lu' or 'lv' for 'lvyou')
+  const inputNormU = normalizedInput.replace(/v/g, 'u');
+  const targetNormU = targetClean.replace(/v/g, 'u');
+  if (targetNormU.startsWith(inputNormU)) {
+    return true;
+  }
+
+  const inputNormV = normalizedInput.replace(/u/g, 'v');
+  const targetNormV = targetClean.replace(/u/g, 'v');
+  if (targetNormV.startsWith(inputNormV)) {
+    return true;
+  }
+
+  if (targetOrig) {
+    const origNormU = targetOrig.replace(/v/g, 'u');
+    if (origNormU.startsWith(inputNormU)) return true;
   }
 
   return false;
@@ -85,7 +135,7 @@ export function getPinyinMatchPrefixLength(input: string, cleanTarget: string): 
   const normalizedInput = cleanPinyin(input);
   if (!normalizedInput || !cleanTarget) return 0;
 
-  if (cleanTarget.startsWith(normalizedInput)) {
+  if (isPinyinPrefixMatch(input, cleanTarget)) {
     return normalizedInput.length;
   }
 
