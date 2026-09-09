@@ -1,7 +1,7 @@
 import React from 'react';
 import { GameMode, WordListPreset } from '../types';
 import { PRESET_WORD_PACKS } from '../data/hskData';
-import { Play, Sparkles, BookOpen, Settings, Trophy, Shield, Zap, Target, Volume2, Upload } from 'lucide-react';
+import { Play, Sparkles, BookOpen, Settings, Trophy, Shield, Zap, Target, Volume2, Upload, Layers } from 'lucide-react';
 
 interface StartScreenProps {
   onStartGame: (mode: GameMode) => void;
@@ -19,33 +19,52 @@ export const StartScreen: React.FC<StartScreenProps> = ({
   highScore,
 }) => {
   return (
-    <div id="galaxy-start-screen" className="relative min-h-screen w-full flex flex-col items-center justify-center p-4 select-none overflow-hidden bg-slate-950">
-      {/* Main Container Card */}
-      <div className="relative z-10 w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col items-center text-center">
-        {/* Top Badge */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950 border border-sky-500/40 text-sky-400 text-xs font-mono font-semibold uppercase tracking-widest mb-4">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Sci-Fi Pinyin Typing Arcade</span>
+    <div
+      id="galaxy-start-screen"
+      className="relative w-full min-h-full flex flex-col items-center justify-start px-4 pt-5 sm:pt-7 pb-28 sm:pb-36 select-none bg-slate-950"
+    >
+      {/* Background Starfield / Radial Glow */}
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(14,165,233,0.12),rgba(255,255,255,0))] pointer-events-none" />
+
+      {/* Main Container Card - starts naturally from top with mx-auto, eliminating negative Y overflow */}
+      <div className="relative z-10 w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl p-4 sm:p-6 shadow-2xl flex flex-col items-center text-center mx-auto">
+        {/* Top Header Row with Badge & Quick Settings */}
+        <div className="w-full flex items-center justify-between mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950 border border-sky-500/40 text-sky-400 text-xs font-mono font-semibold uppercase tracking-widest">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Sci-Fi Pinyin Typing Arcade</span>
+          </div>
+
+          <button
+            id="start-quick-settings-btn"
+            type="button"
+            onClick={onOpenSettingsModal}
+            className="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 hover:border-sky-500 text-slate-300 hover:text-white text-xs font-semibold transition cursor-pointer"
+            title="Open Settings"
+          >
+            <Settings className="w-3.5 h-3.5 text-sky-400" />
+            <span className="hidden sm:inline">Settings</span>
+          </button>
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-2">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight mb-1.5">
           HANZI GALAXY DEFENDER
         </h1>
-        <p className="text-sm sm:text-base text-slate-300 max-w-lg mb-6 leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-300 max-w-lg mb-4 leading-relaxed">
           Defend your space base from falling Hanzi meteors by typing their Pinyin. Each level escalates falling speeds!
         </p>
 
         {/* High Score Banner */}
         {highScore > 0 && (
-          <div className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 bg-amber-950 border border-amber-500/40 rounded-full text-amber-300 text-xs font-mono">
+          <div className="mb-4 inline-flex items-center gap-2 px-4 py-1.5 bg-amber-950 border border-amber-500/40 rounded-full text-amber-300 text-xs font-mono">
             <Trophy className="w-4 h-4 text-amber-400" />
             <span>PERSONAL HIGH SCORE: <strong className="text-amber-200">{highScore.toLocaleString()}</strong></span>
           </div>
         )}
 
         {/* Active Word Pack Selector Card */}
-        <div className="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 mb-6 text-left flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="w-full bg-slate-950 border border-slate-800 rounded-2xl p-3.5 sm:p-4 mb-4 text-left flex flex-col sm:flex-row items-center justify-between gap-3">
           <div>
             <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
               <BookOpen className="w-3.5 h-3.5 text-sky-400" />
@@ -71,23 +90,23 @@ export const StartScreen: React.FC<StartScreenProps> = ({
         </div>
 
         {/* Game Mode Buttons */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
           {/* Campaign Mode */}
           <button
             id="start-campaign-mode-btn"
             type="button"
             onClick={() => onStartGame('campaign')}
-            className="group relative p-4 bg-sky-600 hover:bg-sky-500 rounded-2xl text-left shadow-lg transition active:scale-98 flex flex-col justify-between cursor-pointer"
+            className="group relative p-3.5 sm:p-4 bg-sky-600 hover:bg-sky-500 rounded-2xl text-left shadow-lg transition active:scale-98 flex flex-col justify-between cursor-pointer"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-black uppercase tracking-wider text-sky-100">Recommended</span>
+              <span className="text-xs font-black uppercase tracking-wider text-sky-100">Arcade</span>
               <div className="p-1.5 rounded-full bg-sky-700 text-white group-hover:translate-x-1 transition">
                 <Play className="w-4 h-4 fill-white" />
               </div>
             </div>
             <div>
-              <h3 className="text-lg font-black text-white">Campaign Defense</h3>
-              <p className="text-xs text-sky-100 mt-1">10 escalating levels with speed boosts, multi-word waves & bosses.</p>
+              <h3 className="text-base sm:text-lg font-black text-white">Campaign Defense</h3>
+              <p className="text-xs text-sky-100 mt-0.5">10 escalating levels with speed boosts, multi-word waves & bosses.</p>
             </div>
           </button>
 
@@ -96,7 +115,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({
             id="start-endless-mode-btn"
             type="button"
             onClick={() => onStartGame('endless')}
-            className="group relative p-4 bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-purple-500 rounded-2xl text-left shadow-md transition active:scale-98 flex flex-col justify-between cursor-pointer"
+            className="group relative p-3.5 sm:p-4 bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-purple-500 rounded-2xl text-left shadow-md transition active:scale-98 flex flex-col justify-between cursor-pointer"
           >
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-black uppercase tracking-wider text-purple-400">High Score</span>
@@ -105,46 +124,74 @@ export const StartScreen: React.FC<StartScreenProps> = ({
               </div>
             </div>
             <div>
-              <h3 className="text-lg font-black text-white">Endless Survival</h3>
-              <p className="text-xs text-slate-300 mt-1">Nonstop incoming meteors with continuously accelerating velocity.</p>
+              <h3 className="text-base sm:text-lg font-black text-white">Endless Survival</h3>
+              <p className="text-xs text-slate-300 mt-0.5">Nonstop incoming meteors with continuously accelerating velocity.</p>
             </div>
           </button>
         </div>
 
+        {/* Flashcard Practice Game Mode */}
+        <button
+          id="start-flashcard-mode-btn"
+          type="button"
+          onClick={() => onStartGame('flashcards')}
+          className="w-full mb-4 p-3.5 sm:p-4 bg-gradient-to-r from-emerald-950/80 via-slate-900 to-teal-950/80 hover:from-emerald-900/90 hover:to-teal-900/90 border border-emerald-500/40 hover:border-emerald-400 rounded-2xl text-left shadow-lg transition active:scale-98 flex items-center justify-between group cursor-pointer"
+        >
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 sm:p-3 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 group-hover:scale-105 transition">
+              <Layers className="w-5 h-5 sm:w-6 sm:h-6" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="text-sm sm:text-base font-black text-white">Flashcard Practice Mode</h3>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold uppercase">
+                  All HSK Packs
+                </span>
+              </div>
+              <p className="text-xs text-slate-300 mt-0.5">
+                Study with 3D cards: Hanzi + Pinyin on front, English meaning & example sentence on back.
+              </p>
+            </div>
+          </div>
+          <div className="hidden sm:flex p-2 rounded-xl bg-emerald-500/20 text-emerald-300 group-hover:translate-x-1 transition">
+            <Play className="w-4 h-4 fill-emerald-300" />
+          </div>
+        </button>
+
         {/* How to Play Quick Cards */}
-        <div className="w-full grid grid-cols-3 gap-2 text-left mb-6 pt-4 border-t border-slate-800">
-          <div className="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800">
-            <div className="text-sky-400 mb-1">
-              <Target className="w-4 h-4" />
+        <div className="w-full grid grid-cols-3 gap-2 text-left mb-4 pt-3 border-t border-slate-800">
+          <div className="p-2 bg-slate-950/60 rounded-xl border border-slate-800">
+            <div className="text-sky-400 mb-0.5">
+              <Target className="w-3.5 h-3.5" />
             </div>
-            <div className="text-[11px] font-bold text-slate-200">1. Spot Hanzi</div>
-            <div className="text-[10px] text-slate-400">Characters fall from the galaxy top</div>
+            <div className="text-[10px] sm:text-[11px] font-bold text-slate-200">1. Spot Hanzi</div>
+            <div className="text-[9px] sm:text-[10px] text-slate-400">Words fall from top</div>
           </div>
-          <div className="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800">
-            <div className="text-emerald-400 mb-1">
-              <Zap className="w-4 h-4" />
+          <div className="p-2 bg-slate-950/60 rounded-xl border border-slate-800">
+            <div className="text-emerald-400 mb-0.5">
+              <Zap className="w-3.5 h-3.5" />
             </div>
-            <div className="text-[11px] font-bold text-slate-200">2. Type Pinyin</div>
-            <div className="text-[10px] text-slate-400">e.g. type "nihao" or "xiexie"</div>
+            <div className="text-[10px] sm:text-[11px] font-bold text-slate-200">2. Type Pinyin</div>
+            <div className="text-[9px] sm:text-[10px] text-slate-400">e.g. type "nihao"</div>
           </div>
-          <div className="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800">
-            <div className="text-purple-400 mb-1">
-              <Shield className="w-4 h-4" />
+          <div className="p-2 bg-slate-950/60 rounded-xl border border-slate-800">
+            <div className="text-purple-400 mb-0.5">
+              <Shield className="w-3.5 h-3.5" />
             </div>
-            <div className="text-[11px] font-bold text-slate-200">3. Fire & Defend</div>
-            <div className="text-[10px] text-slate-400">Laser destroys meteor before base hit</div>
+            <div className="text-[10px] sm:text-[11px] font-bold text-slate-200">3. Fire Laser</div>
+            <div className="text-[9px] sm:text-[10px] text-slate-400">Destroys before base hit</div>
           </div>
         </div>
 
-        {/* Settings button */}
-        <div className="flex items-center justify-center">
+        {/* Settings button with prominent styling and plenty of breathing room */}
+        <div className="w-full flex items-center justify-center pt-1">
           <button
             id="start-settings-btn"
             type="button"
             onClick={onOpenSettingsModal}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-slate-300 text-xs font-semibold transition"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 hover:border-sky-500 text-slate-200 hover:text-white text-xs sm:text-sm font-semibold transition cursor-pointer shadow-md active:scale-98"
           >
-            <Settings className="w-4 h-4 text-slate-400" />
+            <Settings className="w-4 h-4 text-sky-400" />
             <span>Settings & Sound Options</span>
           </button>
         </div>

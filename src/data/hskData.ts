@@ -2,7 +2,7 @@ import { HanziWord } from '../types';
 import { cleanPinyin } from '../utils/pinyin';
 
 export const HSK_DICTIONARY: HanziWord[] = [
-  // HSK 1 Core Basics
+  // HSK 1 Core Basics (50 words)
   { id: 'h1-1', hanzi: '你', pinyin: 'nǐ', pinyinClean: 'ni', english: 'you', hskLevel: 1, category: 'Basic' },
   { id: 'h1-2', hanzi: '好', pinyin: 'hǎo', pinyinClean: 'hao', english: 'good / well', hskLevel: 1, category: 'Basic' },
   { id: 'h1-3', hanzi: '你好', pinyin: 'nǐ hǎo', pinyinClean: 'nihao', english: 'hello', hskLevel: 1, category: 'Greetings' },
@@ -54,7 +54,7 @@ export const HSK_DICTIONARY: HanziWord[] = [
   { id: 'h1-49', hanzi: '书', pinyin: 'shū', pinyinClean: 'shu', english: 'book', hskLevel: 1, category: 'Objects' },
   { id: 'h1-50', hanzi: '飞机', pinyin: 'fēi jī', pinyinClean: 'feiji', english: 'airplane', hskLevel: 1, category: 'Travel' },
 
-  // HSK 2 Everyday Vocabulary
+  // HSK 2 Everyday Vocabulary (50 words)
   { id: 'h2-1', hanzi: '帮助', pinyin: 'bāng zhù', pinyinClean: 'bangzhu', english: 'to help / assist', hskLevel: 2, category: 'Verbs' },
   { id: 'h2-2', hanzi: '唱歌', pinyin: 'chàng gē', pinyinClean: 'changge', english: 'to sing a song', hskLevel: 2, category: 'Activities' },
   { id: 'h2-3', hanzi: '跳舞', pinyin: 'tiào wǔ', pinyinClean: 'tiaowu', english: 'to dance', hskLevel: 2, category: 'Activities' },
@@ -81,8 +81,32 @@ export const HSK_DICTIONARY: HanziWord[] = [
   { id: 'h2-24', hanzi: '结束', pinyin: 'jié shù', pinyinClean: 'jieshu', english: 'to finish / end', hskLevel: 2, category: 'Verbs' },
   { id: 'h2-25', hanzi: '火车站', pinyin: 'huǒ chē zhàn', pinyinClean: 'huochezhan', english: 'train station', hskLevel: 2, category: 'Places' },
   { id: 'h2-26', hanzi: '机场', pinyin: 'jī chǎng', pinyinClean: 'jichang', english: 'airport', hskLevel: 2, category: 'Places' },
+  { id: 'h2-27', hanzi: '公共汽车', pinyin: 'gōng gòng qì chē', pinyinClean: 'gonggongqiche', english: 'bus', hskLevel: 2, category: 'Travel' },
+  { id: 'h2-28', hanzi: '自行车', pinyin: 'zì xíng chē', pinyinClean: 'zixingche', english: 'bicycle / bike', hskLevel: 2, category: 'Travel' },
+  { id: 'h2-29', hanzi: '医院', pinyin: 'yī yuàn', pinyinClean: 'yiyuan', english: 'hospital', hskLevel: 2, category: 'Places' },
+  { id: 'h2-30', hanzi: '饭馆', pinyin: 'fàn guǎn', pinyinClean: 'fanguan', english: 'restaurant', hskLevel: 2, category: 'Places' },
+  { id: 'h2-31', hanzi: '生病', pinyin: 'shēng bìng', pinyinClean: 'shengbing', english: 'to fall ill / sick', hskLevel: 2, category: 'Health' },
+  { id: 'h2-32', hanzi: '身体', pinyin: 'shēn tǐ', pinyinClean: 'shenti', english: 'body / health', hskLevel: 2, category: 'Health' },
+  { id: 'h2-33', hanzi: '药', pinyin: 'yào', pinyinClean: 'yao', english: 'medicine', hskLevel: 2, category: 'Health' },
+  { id: 'h2-34', hanzi: '休息', pinyin: 'xiū xi', pinyinClean: 'xiuxi', english: 'to rest', hskLevel: 2, category: 'Daily' },
+  { id: 'h2-35', hanzi: '起床', pinyin: 'qǐ chuáng', pinyinClean: 'qichuang', english: 'to get out of bed', hskLevel: 2, category: 'Daily' },
+  { id: 'h2-36', hanzi: '睡觉', pinyin: 'shuì jiào', pinyinClean: 'shuijiao', english: 'to sleep', hskLevel: 2, category: 'Daily' },
+  { id: 'h2-37', hanzi: '穿', pinyin: 'chuān', pinyinClean: 'chuan', english: 'to wear / put on', hskLevel: 2, category: 'Verbs' },
+  { id: 'h2-38', hanzi: '衣服', pinyin: 'yī fu', pinyinClean: 'yifu', english: 'clothes', hskLevel: 2, category: 'Objects' },
+  { id: 'h2-39', hanzi: '妻子', pinyin: 'qī zi', pinyinClean: 'qizi', english: 'wife', hskLevel: 2, category: 'Family' },
+  { id: 'h2-40', hanzi: '丈夫', pinyin: 'zhàng fu', pinyinClean: 'zhangfu', english: 'husband', hskLevel: 2, category: 'Family' },
+  { id: 'h2-41', hanzi: '哥哥', pinyin: 'gē ge', pinyinClean: 'gege', english: 'older brother', hskLevel: 2, category: 'Family' },
+  { id: 'h2-42', hanzi: '姐姐', pinyin: 'jiě jie', pinyinClean: 'jiejie', english: 'older sister', hskLevel: 2, category: 'Family' },
+  { id: 'h2-43', hanzi: '弟弟', pinyin: 'dì di', pinyinClean: 'didi', english: 'younger brother', hskLevel: 2, category: 'Family' },
+  { id: 'h2-44', hanzi: '妹妹', pinyin: 'mèi mei', pinyinClean: 'meimei', english: 'younger sister', hskLevel: 2, category: 'Family' },
+  { id: 'h2-45', hanzi: '鱼', pinyin: 'yú', pinyinClean: 'yu', english: 'fish', hskLevel: 2, category: 'Animals' },
+  { id: 'h2-46', hanzi: '羊肉', pinyin: 'yáng ròu', pinyinClean: 'yangrou', english: 'mutton / lamb', hskLevel: 2, category: 'Food' },
+  { id: 'h2-47', hanzi: '牛奶', pinyin: 'niú nǎi', pinyinClean: 'niunai', english: 'milk', hskLevel: 2, category: 'Food' },
+  { id: 'h2-48', hanzi: '西瓜', pinyin: 'xī guā', pinyinClean: 'xigua', english: 'watermelon', hskLevel: 2, category: 'Food' },
+  { id: 'h2-49', hanzi: '晴', pinyin: 'qíng', pinyinClean: 'qing', english: 'clear / fine weather', hskLevel: 2, category: 'Nature' },
+  { id: 'h2-50', hanzi: '阴', pinyin: 'yīn', pinyinClean: 'yin', english: 'overcast / cloudy', hskLevel: 2, category: 'Nature' },
 
-  // HSK 3 Intermediate
+  // HSK 3 Intermediate (50 words)
   { id: 'h3-1', hanzi: '环境', pinyin: 'huán jìng', pinyinClean: 'huanjing', english: 'environment', hskLevel: 3, category: 'Society' },
   { id: 'h3-2', hanzi: '解决', pinyin: 'jiě jué', pinyinClean: 'jiejue', english: 'to solve / settle', hskLevel: 3, category: 'Verbs' },
   { id: 'h3-3', hanzi: '历史', pinyin: 'lì shǐ', pinyinClean: 'lishi', english: 'history', hskLevel: 3, category: 'Education' },
@@ -118,8 +142,23 @@ export const HSK_DICTIONARY: HanziWord[] = [
   { id: 'h3-33', hanzi: '打算', pinyin: 'dǎ suan', pinyinClean: 'dasuan', english: 'to plan / intend', hskLevel: 3, category: 'Verbs' },
   { id: 'h3-34', hanzi: '客人', pinyin: 'kè ren', pinyinClean: 'keren', english: 'guest / visitor', hskLevel: 3, category: 'People' },
   { id: 'h3-35', hanzi: '经理', pinyin: 'jīng lǐ', pinyinClean: 'jingli', english: 'manager / director', hskLevel: 3, category: 'Work' },
+  { id: 'h3-36', hanzi: '同事', pinyin: 'tóng shì', pinyinClean: 'tongshi', english: 'colleague / co-worker', hskLevel: 3, category: 'Work' },
+  { id: 'h3-37', hanzi: '会议', pinyin: 'huì yì', pinyinClean: 'huiyi', english: 'meeting / conference', hskLevel: 3, category: 'Work' },
+  { id: 'h3-38', hanzi: '地图', pinyin: 'dì tú', pinyinClean: 'ditu', english: 'map', hskLevel: 3, category: 'Travel' },
+  { id: 'h3-39', hanzi: '行李箱', pinyin: 'xíng li xiāng', pinyinClean: 'xinglixiang', english: 'suitcase / luggage', hskLevel: 3, category: 'Travel' },
+  { id: 'h3-40', hanzi: '突然', pinyin: 'tū rán', pinyinClean: 'turan', english: 'sudden / unexpected', hskLevel: 3, category: 'Adjectives' },
+  { id: 'h3-41', hanzi: '安静', pinyin: 'ān jìng', pinyinClean: 'anjing', english: 'quiet / peaceful', hskLevel: 3, category: 'Adjectives' },
+  { id: 'h3-42', hanzi: '着急', pinyin: 'zháo jí', pinyinClean: 'zhaoji', english: 'worried / anxious', hskLevel: 3, category: 'Feelings' },
+  { id: 'h3-43', hanzi: '难过', pinyin: 'nán guò', pinyinClean: 'nanguo', english: 'sad / grieved', hskLevel: 3, category: 'Feelings' },
+  { id: 'h3-44', hanzi: '借', pinyin: 'jiè', pinyinClean: 'jie', english: 'to borrow / lend', hskLevel: 3, category: 'Verbs' },
+  { id: 'h3-45', hanzi: '还', pinyin: 'huán', pinyinClean: 'huan', english: 'to return / give back', hskLevel: 3, category: 'Verbs' },
+  { id: 'h3-46', hanzi: '迟到', pinyin: 'chí dào', pinyinClean: 'chidao', english: 'to arrive late', hskLevel: 3, category: 'Daily' },
+  { id: 'h3-47', hanzi: '除了', pinyin: 'chú le', pinyinClean: 'chule', english: 'except / besides', hskLevel: 3, category: 'Preposition' },
+  { id: 'h3-48', hanzi: '根据', pinyin: 'gēn jù', pinyinClean: 'genju', english: 'according to / based on', hskLevel: 3, category: 'Preposition' },
+  { id: 'h3-49', hanzi: '其实', pinyin: 'qí shí', pinyinClean: 'qishi', english: 'actually / in fact', hskLevel: 3, category: 'Adverbs' },
+  { id: 'h3-50', hanzi: '几乎', pinyin: 'jī hū', pinyinClean: 'jihu', english: 'almost / nearly', hskLevel: 3, category: 'Adverbs' },
 
-  // HSK 4 Upper-Intermediate
+  // HSK 4 Upper-Intermediate (50 words)
   { id: 'h4-1', hanzi: '坚持', pinyin: 'jiān chí', pinyinClean: 'jianchi', english: 'to persist / persevere', hskLevel: 4, category: 'Verbs' },
   { id: 'h4-2', hanzi: '成功', pinyin: 'chéng gōng', pinyinClean: 'chenggong', english: 'success / to succeed', hskLevel: 4, category: 'Verbs' },
   { id: 'h4-3', hanzi: '态度', pinyin: 'tài du', pinyinClean: 'taidu', english: 'manner / attitude', hskLevel: 4, category: 'Abstract' },
@@ -155,8 +194,23 @@ export const HSK_DICTIONARY: HanziWord[] = [
   { id: 'h4-33', hanzi: '鼓励', pinyin: 'gǔ lì', pinyinClean: 'guli', english: 'to encourage / urge', hskLevel: 4, category: 'Verbs' },
   { id: 'h4-34', hanzi: '激动', pinyin: 'jī dòng', pinyinClean: 'jidong', english: 'excited / emotional', hskLevel: 4, category: 'Feelings' },
   { id: 'h4-35', hanzi: '精彩', pinyin: 'jīng cǎi', pinyinClean: 'jingcai', english: 'splendid / wonderful', hskLevel: 4, category: 'Adjectives' },
+  { id: 'h4-36', hanzi: '不仅', pinyin: 'bù jǐn', pinyinClean: 'bujin', english: 'not only', hskLevel: 4, category: 'Conjunction' },
+  { id: 'h4-37', hanzi: '并且', pinyin: 'bìng qiě', pinyinClean: 'bingqie', english: 'and / besides / moreover', hskLevel: 4, category: 'Conjunction' },
+  { id: 'h4-38', hanzi: '尽管', pinyin: 'jǐn guǎn', pinyinClean: 'jinguan', english: 'despite / although', hskLevel: 4, category: 'Conjunction' },
+  { id: 'h4-39', hanzi: '倒霉', pinyin: 'dǎo méi', pinyinClean: 'daomei', english: 'unlucky / out of luck', hskLevel: 4, category: 'Adjectives' },
+  { id: 'h4-40', hanzi: '粗心', pinyin: 'cū xīn', pinyinClean: 'cuxin', english: 'careless / thoughtless', hskLevel: 4, category: 'Adjectives' },
+  { id: 'h4-41', hanzi: '轻松', pinyin: 'qīng sōng', pinyinClean: 'qingsong', english: 'light / relaxed', hskLevel: 4, category: 'Adjectives' },
+  { id: 'h4-42', hanzi: '同情', pinyin: 'tóng qíng', pinyinClean: 'tongqing', english: 'to sympathize with', hskLevel: 4, category: 'Feelings' },
+  { id: 'h4-43', hanzi: '感动', pinyin: 'gǎn dòng', pinyinClean: 'gandong', english: 'to move / touch emotionally', hskLevel: 4, category: 'Feelings' },
+  { id: 'h4-44', hanzi: '表达', pinyin: 'biǎo dá', pinyinClean: 'biaoda', english: 'to express / convey', hskLevel: 4, category: 'Verbs' },
+  { id: 'h4-45', hanzi: '交流', pinyin: 'jiāo liú', pinyinClean: 'jiaoliu', english: 'to communicate / exchange', hskLevel: 4, category: 'Social' },
+  { id: 'h4-46', hanzi: '商量', pinyin: 'shāng liang', pinyinClean: 'shangliang', english: 'to consult / discuss', hskLevel: 4, category: 'Verbs' },
+  { id: 'h4-47', hanzi: '建议', pinyin: 'jiàn yì', pinyinClean: 'jianyi', english: 'to suggest / suggestion', hskLevel: 4, category: 'Work' },
+  { id: 'h4-48', hanzi: '任务', pinyin: 'rèn wu', pinyinClean: 'renwu', english: 'task / assignment', hskLevel: 4, category: 'Work' },
+  { id: 'h4-49', hanzi: '重点', pinyin: 'zhòng diǎn', pinyinClean: 'zhongdian', english: 'focal point / emphasis', hskLevel: 4, category: 'Abstract' },
+  { id: 'h4-50', hanzi: '水平', pinyin: 'shuǐ píng', pinyinClean: 'shuiping', english: 'level / standard', hskLevel: 4, category: 'Abstract' },
 
-  // HSK 5 Advanced Fluency
+  // HSK 5 Advanced Fluency (50 words)
   { id: 'h5-1', hanzi: '把握', pinyin: 'bǎ wò', pinyinClean: 'bawo', english: 'to grasp / hold / certainty', hskLevel: 5, category: 'Abstract' },
   { id: 'h5-2', hanzi: '彼此', pinyin: 'bǐ cǐ', pinyinClean: 'bici', english: 'each other / one another', hskLevel: 5, category: 'Pronoun' },
   { id: 'h5-3', hanzi: '毕竟', pinyin: 'bì jìng', pinyinClean: 'bijing', english: 'after all / in the end', hskLevel: 5, category: 'Adverbs' },
@@ -192,8 +246,23 @@ export const HSK_DICTIONARY: HanziWord[] = [
   { id: 'h5-33', hanzi: '逻辑', pinyin: 'luó ji', pinyinClean: 'luoji', english: 'logic', hskLevel: 5, category: 'Abstract' },
   { id: 'h5-34', hanzi: '趋势', pinyin: 'qū shì', pinyinClean: 'qushi', english: 'trend / tendency', hskLevel: 5, category: 'Abstract' },
   { id: 'h5-35', hanzi: '浏览', pinyin: 'liú lǎn', pinyinClean: 'liulan', english: 'to skim / browse', hskLevel: 5, category: 'Verbs' },
+  { id: 'h5-36', hanzi: '导致', pinyin: 'dǎo zhì', pinyinClean: 'daozhi', english: 'to lead to / cause', hskLevel: 5, category: 'Verbs' },
+  { id: 'h5-37', hanzi: '面临', pinyin: 'miàn lín', pinyinClean: 'mianlin', english: 'to face / confront', hskLevel: 5, category: 'Verbs' },
+  { id: 'h5-38', hanzi: '促进', pinyin: 'cù jìn', pinyinClean: 'cujin', english: 'to promote / advance', hskLevel: 5, category: 'Verbs' },
+  { id: 'h5-39', hanzi: '避免', pinyin: 'bì miǎn', pinyinClean: 'bimian', english: 'to avoid / avert', hskLevel: 5, category: 'Verbs' },
+  { id: 'h5-40', hanzi: '建立', pinyin: 'jiàn lì', pinyinClean: 'jianli', english: 'to establish / set up', hskLevel: 5, category: 'Verbs' },
+  { id: 'h5-41', hanzi: '本质', pinyin: 'běn zhì', pinyinClean: 'benzhi', english: 'essence / nature', hskLevel: 5, category: 'Abstract' },
+  { id: 'h5-42', hanzi: '现象', pinyin: 'xiàn xiàng', pinyinClean: 'xianxiang', english: 'phenomenon', hskLevel: 5, category: 'Abstract' },
+  { id: 'h5-43', hanzi: '原则', pinyin: 'yuán zé', pinyinClean: 'yuanze', english: 'principle / doctrine', hskLevel: 5, category: 'Abstract' },
+  { id: 'h5-44', hanzi: '比例', pinyin: 'bǐ lì', pinyinClean: 'bili', english: 'proportion / scale', hskLevel: 5, category: 'Abstract' },
+  { id: 'h5-45', hanzi: '趋势', pinyin: 'qū shì', pinyinClean: 'qushi', english: 'trend / tendency', hskLevel: 5, category: 'Abstract' },
+  { id: 'h5-46', hanzi: '艰巨', pinyin: 'jiān jù', pinyinClean: 'jianju', english: 'formidable / arduous', hskLevel: 5, category: 'Adjectives' },
+  { id: 'h5-47', hanzi: '巧妙', pinyin: 'qiǎo miào', pinyinClean: 'qiaomiao', english: 'ingenious / clever', hskLevel: 5, category: 'Adjectives' },
+  { id: 'h5-48', hanzi: '坦率', pinyin: 'tǎn shuài', pinyinClean: 'tanshuai', english: 'frank / outspoken', hskLevel: 5, category: 'Adjectives' },
+  { id: 'h5-49', hanzi: '谨慎', pinyin: 'jǐn shèn', pinyinClean: 'jinshen', english: 'cautious / prudent', hskLevel: 5, category: 'Adjectives' },
+  { id: 'h5-50', hanzi: '深刻', pinyin: 'shēn kè', pinyinClean: 'shenke', english: 'profound / deep', hskLevel: 5, category: 'Adjectives' },
 
-  // HSK 6 Proficiency
+  // HSK 6 Proficiency (50 words)
   { id: 'h6-1', hanzi: '昂贵', pinyin: 'áng guì', pinyinClean: 'anggui', english: 'expensive / costly', hskLevel: 6, category: 'Adjectives' },
   { id: 'h6-2', hanzi: '伴随', pinyin: 'bàn suí', pinyinClean: 'bansui', english: 'to accompany / follow', hskLevel: 6, category: 'Verbs' },
   { id: 'h6-3', hanzi: '崩溃', pinyin: 'bēng kuì', pinyinClean: 'bengkui', english: 'to collapse / crumble', hskLevel: 6, category: 'Verbs' },
@@ -229,8 +298,23 @@ export const HSK_DICTIONARY: HanziWord[] = [
   { id: 'h6-33', hanzi: '颠覆', pinyin: 'diān fù', pinyinClean: 'dianfu', english: 'to overturn / subvert', hskLevel: 6, category: 'Verbs' },
   { id: 'h6-34', hanzi: '宏观', pinyin: 'hóng guān', pinyinClean: 'hongguan', english: 'macroscopic / holistic', hskLevel: 6, category: 'Abstract' },
   { id: 'h6-35', hanzi: '琢磨', pinyin: 'zhuó mó', pinyinClean: 'zhuomo', english: 'to ponder / polish', hskLevel: 6, category: 'Verbs' },
+  { id: 'h6-36', hanzi: '筹备', pinyin: 'chóu bèi', pinyinClean: 'choubei', english: 'to prepare / arrange', hskLevel: 6, category: 'Verbs' },
+  { id: 'h6-37', hanzi: '倡导', pinyin: 'chàng dǎo', pinyinClean: 'changdao', english: 'to initiate / advocate', hskLevel: 6, category: 'Verbs' },
+  { id: 'h6-38', hanzi: '诞生', pinyin: 'dàn shēng', pinyinClean: 'dansheng', english: 'to be born / come into being', hskLevel: 6, category: 'Verbs' },
+  { id: 'h6-39', hanzi: '抵触', pinyin: 'dǐ chù', pinyinClean: 'dichu', english: 'to conflict / contradict', hskLevel: 6, category: 'Verbs' },
+  { id: 'h6-40', hanzi: '干涉', pinyin: 'gān shè', pinyinClean: 'ganshe', english: 'to interfere / meddle', hskLevel: 6, category: 'Verbs' },
+  { id: 'h6-41', hanzi: '规章', pinyin: 'guī zhāng', pinyinClean: 'guizhang', english: 'rule / regulation', hskLevel: 6, category: 'Society' },
+  { id: 'h6-42', hanzi: '寄托', pinyin: 'jì tuō', pinyinClean: 'jituo', english: 'to place (hope) on / entrust', hskLevel: 6, category: 'Abstract' },
+  { id: 'h6-43', hanzi: '开辟', pinyin: 'kāi pì', pinyinClean: 'kaipi', english: 'to open up / establish', hskLevel: 6, category: 'Verbs' },
+  { id: 'h6-44', hanzi: '凝聚', pinyin: 'níng jù', pinyinClean: 'ningju', english: 'to cohere / condense', hskLevel: 6, category: 'Abstract' },
+  { id: 'h6-45', hanzi: '排斥', pinyin: 'pái chì', pinyinClean: 'paichi', english: 'to reject / exclude', hskLevel: 6, category: 'Verbs' },
+  { id: 'h6-46', hanzi: '偏见', pinyin: 'piān jiàn', pinyinClean: 'pianjian', english: 'prejudice / bias', hskLevel: 6, category: 'Abstract' },
+  { id: 'h6-47', hanzi: '倾听', pinyin: 'qīng tīng', pinyinClean: 'qingting', english: 'to listen attentively', hskLevel: 6, category: 'Verbs' },
+  { id: 'h6-48', hanzi: '深奥', pinyin: 'shēn ào', pinyinClean: 'shenao', english: 'profound / abstruse', hskLevel: 6, category: 'Adjectives' },
+  { id: 'h6-49', hanzi: '畏缩', pinyin: 'wèi suō', pinyinClean: 'weisuo', english: 'to cower / flinch', hskLevel: 6, category: 'Verbs' },
+  { id: 'h6-50', hanzi: '赞叹', pinyin: 'zàn tàn', pinyinClean: 'zantan', english: 'to gasp in admiration / praise', hskLevel: 6, category: 'Verbs' },
 
-  // HSK 7-9 Mastery & Advanced Specialization
+  // HSK 7-9 Mastery & Advanced Specialization (50 words)
   { id: 'h7-1', hanzi: '秉持', pinyin: 'bǐng chí', pinyinClean: 'bingchi', english: 'to uphold / adhere to', hskLevel: 7, category: 'Advanced' },
   { id: 'h7-2', hanzi: '博览', pinyin: 'bó lǎn', pinyinClean: 'bolan', english: 'to read widely / exposition', hskLevel: 7, category: 'Advanced' },
   { id: 'h7-3', hanzi: '昌盛', pinyin: 'chāng shèng', pinyinClean: 'changsheng', english: 'prosperous / flourishing', hskLevel: 7, category: 'Advanced' },
@@ -266,6 +350,21 @@ export const HSK_DICTIONARY: HanziWord[] = [
   { id: 'h7-33', hanzi: '脉络', pinyin: 'mài luò', pinyinClean: 'mailuo', english: 'veins / context / train of thought', hskLevel: 7, category: 'Advanced' },
   { id: 'h7-34', hanzi: '缔造', pinyin: 'dì zào', pinyinClean: 'dizao', english: 'to create / establish / found', hskLevel: 7, category: 'Advanced' },
   { id: 'h7-35', hanzi: '领航', pinyin: 'lǐng háng', pinyinClean: 'linghang', english: 'to navigate / pilot / pioneer', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-36', hanzi: '斡旋', pinyin: 'wò xuán', pinyinClean: 'woxuan', english: 'to mediate / intervene', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-37', hanzi: '磅礴', pinyin: 'páng bó', pinyinClean: 'pangbo', english: 'boundless / majestic / immense', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-38', hanzi: '缜密', pinyin: 'zhěn mì', pinyinClean: 'zhenmi', english: 'meticulous / rigorous', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-39', hanzi: '恪守', pinyin: 'kè shǒu', pinyinClean: 'keshou', english: 'to scrupulously abide by', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-40', hanzi: '博弈', pinyin: 'bó yì', pinyinClean: 'boyi', english: 'game / contest / game theory', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-41', hanzi: '蕴含', pinyin: 'yùn hán', pinyinClean: 'yunhan', english: 'to contain / imply / hold inside', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-42', hanzi: '馈赠', pinyin: 'kuì zèng', pinyinClean: 'kuizeng', english: 'gift / present / bestowal', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-43', hanzi: '溯及', pinyin: 'sù jí', pinyinClean: 'suji', english: 'to trace back to / retroactive', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-44', hanzi: '铿锵', pinyin: 'kēng qiāng', pinyinClean: 'kengqiang', english: 'sonorous / resounding', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-45', hanzi: '淬炼', pinyin: 'cuì liàn', pinyinClean: 'cuilian', english: 'to quench / temper / hone', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-46', hanzi: '奠定', pinyin: 'diàn dìng', pinyinClean: 'dianding', english: 'to establish / settle / lay base', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-47', hanzi: '瞻前顾后', pinyin: 'zhān qián gù hòu', pinyinClean: 'zhanqianguhou', english: 'overcautious / prudent foresight', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-48', hanzi: '融会贯通', pinyin: 'róng huì guàn tōng', pinyinClean: 'ronghuiguantong', english: 'master comprehensive knowledge', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-49', hanzi: '未雨绸缪', pinyin: 'wèi yǔ chóu móu', pinyinClean: 'weiyuchoumou', english: 'prepare before rain / precaution', hskLevel: 7, category: 'Advanced' },
+  { id: 'h7-50', hanzi: '潜移默化', pinyin: 'qián yí mò huà', pinyinClean: 'qianyimohua', english: 'imperceptible influence', hskLevel: 7, category: 'Advanced' },
 ];
 
 // Fast lookup map from Hanzi to HanziWord

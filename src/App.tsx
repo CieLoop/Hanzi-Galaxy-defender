@@ -25,6 +25,7 @@ import { StartScreen } from './components/StartScreen';
 import { EndOfMatchModal } from './components/EndOfMatchModal';
 import { WordListModal } from './components/WordListModal';
 import { SettingsModal } from './components/SettingsModal';
+import { FlashcardMode } from './components/FlashcardMode';
 
 const DEFAULT_SETTINGS: GameSettings = {
   soundEnabled: true,
@@ -266,6 +267,12 @@ export default function App() {
 
   // Start new game
   const handleStartGame = (mode: GameMode, startLvl: number = 1) => {
+    if (mode === 'flashcards') {
+      setGameState('flashcards');
+      setGameMode('flashcards');
+      return;
+    }
+
     setGameState('playing');
     setGameMode(mode);
     setCurrentLevel(startLvl);
@@ -682,7 +689,14 @@ export default function App() {
   const targetedProjectile = projectiles.find(p => p.id === targetedProjectileId) || null;
 
   return (
-    <div id="hanzi-galaxy-app" className="relative w-full h-screen overflow-hidden bg-slate-950 text-slate-100 flex flex-col font-sans select-none">
+    <div
+      id="hanzi-galaxy-app"
+      className={`relative w-full h-[100dvh] min-h-[100dvh] bg-slate-950 text-slate-100 flex flex-col font-sans select-none ${
+        gameState === 'playing' || gameState === 'paused'
+          ? 'overflow-hidden'
+          : 'overflow-y-auto'
+      }`}
+    >
       {/* 1. START MENU SCREEN */}
       {gameState === 'menu' && (
         <StartScreen
@@ -691,6 +705,16 @@ export default function App() {
           onOpenWordListModal={() => setIsWordListModalOpen(true)}
           onOpenSettingsModal={() => setIsSettingsModalOpen(true)}
           highScore={highScore}
+        />
+      )}
+
+      {/* 1.5. FLASHCARD PRACTICE LAB */}
+      {gameState === 'flashcards' && (
+        <FlashcardMode
+          selectedPack={selectedPack}
+          customPacks={customPacks}
+          onSelectPack={(pack) => setSelectedPack(pack)}
+          onExit={() => setGameState('menu')}
         />
       )}
 
@@ -773,7 +797,7 @@ export default function App() {
           </div>
 
           {/* Bottom Typing Command Bar */}
-          <div className="pb-4 pt-1 flex-shrink-0">
+          <div className="pb-5 sm:pb-8 pt-1 flex-shrink-0">
             <TypingInput
               currentInput={currentInput}
               onInputChange={handleInputChange}
@@ -836,6 +860,10 @@ export default function App() {
         onSelectPack={(pack) => setSelectedPack(pack)}
         onSaveCustomPack={handleSaveCustomPack}
         onDeleteCustomPack={handleDeleteCustomPack}
+        onStartFlashcards={(pack) => {
+          setSelectedPack(pack);
+          handleStartGame('flashcards');
+        }}
       />
 
       {/* 6. SETTINGS MODAL */}

@@ -3,7 +3,7 @@ import { WordListPreset, HanziWord } from '../types';
 import { PRESET_WORD_PACKS } from '../data/hskData';
 import { parseTxtWordList, getSampleTxtTemplate } from '../utils/txtParser';
 import { speakChinese } from '../utils/pinyin';
-import { X, Upload, FileText, Download, Check, Volume2, Plus, Trash2, BookOpen } from 'lucide-react';
+import { X, Upload, FileText, Download, Check, Volume2, Plus, Trash2, BookOpen, Layers } from 'lucide-react';
 
 interface WordListModalProps {
   isOpen: boolean;
@@ -13,6 +13,7 @@ interface WordListModalProps {
   onSelectPack: (pack: WordListPreset) => void;
   onSaveCustomPack: (pack: WordListPreset) => void;
   onDeleteCustomPack: (packId: string) => void;
+  onStartFlashcards?: (pack: WordListPreset) => void;
 }
 
 export const WordListModal: React.FC<WordListModalProps> = ({
@@ -23,6 +24,7 @@ export const WordListModal: React.FC<WordListModalProps> = ({
   onSelectPack,
   onSaveCustomPack,
   onDeleteCustomPack,
+  onStartFlashcards,
 }) => {
   const [activeTab, setActiveTab] = useState<'presets' | 'import' | 'custom'>('presets');
   const [pastedText, setPastedText] = useState('');
@@ -118,7 +120,7 @@ export const WordListModal: React.FC<WordListModalProps> = ({
 
   return (
     <div id="word-list-modal-backdrop" className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-fadeIn">
-      <div id="word-list-modal-box" className="relative w-full max-w-3xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      <div id="word-list-modal-box" className="relative w-full max-w-3xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85dvh]">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/60">
           <div className="flex items-center gap-2">
@@ -210,17 +212,35 @@ export const WordListModal: React.FC<WordListModalProps> = ({
                       <p className="text-xs text-slate-400 leading-relaxed mb-3">{pack.description}</p>
                     </div>
 
-                    {/* Word Sample Preview */}
-                    <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-700/50">
-                      {pack.words.slice(0, 6).map((w, idx) => (
-                        <span key={idx} className="text-xs px-2 py-0.5 rounded bg-slate-900/80 text-slate-300">
-                          {w.hanzi} ({w.pinyinClean})
-                        </span>
-                      ))}
-                      {pack.words.length > 6 && (
-                        <span className="text-xs px-1.5 py-0.5 text-slate-500">
-                          +{pack.words.length - 6} more
-                        </span>
+                    {/* Word Sample Preview & Actions */}
+                    <div className="flex flex-wrap items-center justify-between gap-1.5 pt-2 border-t border-slate-700/50">
+                      <div className="flex flex-wrap gap-1.5">
+                        {pack.words.slice(0, 5).map((w, idx) => (
+                          <span key={idx} className="text-xs px-2 py-0.5 rounded bg-slate-900/80 text-slate-300">
+                            {w.hanzi} ({w.pinyinClean})
+                          </span>
+                        ))}
+                        {pack.words.length > 5 && (
+                          <span className="text-xs px-1.5 py-0.5 text-slate-500">
+                            +{pack.words.length - 5} more
+                          </span>
+                        )}
+                      </div>
+
+                      {onStartFlashcards && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onStartFlashcards(pack);
+                            onClose();
+                          }}
+                          className="mt-1 sm:mt-0 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-950/60 hover:bg-emerald-900/80 border border-emerald-500/40 text-emerald-300 text-xs font-semibold transition cursor-pointer"
+                          title="Open flashcards for this pack"
+                        >
+                          <Layers className="w-3.5 h-3.5" />
+                          <span>Flashcards</span>
+                        </button>
                       )}
                     </div>
                   </div>

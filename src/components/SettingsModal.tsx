@@ -59,9 +59,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
   return (
     <div id="settings-modal-backdrop" className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-fadeIn">
-      <div id="settings-modal-box" className="relative w-full max-w-md bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+      <div id="settings-modal-box" className="relative w-full max-w-md bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85dvh]">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/60">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/60 flex-shrink-0">
           <div className="flex items-center gap-2">
             <Sliders className="w-5 h-5 text-sky-400" />
             <h2 className="text-lg font-bold text-white tracking-wide">Game Settings</h2>
@@ -77,7 +77,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-6 max-h-[80vh] overflow-y-auto">
+        <div className="p-5 sm:p-6 space-y-5 sm:space-y-6 overflow-y-auto flex-1">
           {/* Base Speed Preset */}
           <div className="space-y-2">
             <label className="text-xs font-semibold uppercase text-slate-400 tracking-wider flex items-center justify-between">

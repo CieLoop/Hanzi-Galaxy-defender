@@ -110,13 +110,13 @@ export const EndOfMatchModal: React.FC<EndOfMatchModalProps> = ({
   return (
     <div
       id="end-of-match-modal-backdrop"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 backdrop-blur-md p-3 sm:p-5 animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 backdrop-blur-md p-3 sm:p-5 overflow-y-auto animate-fadeIn"
     >
       <div
         id="end-of-match-modal-box"
         className={`relative w-full max-w-2xl bg-slate-900 border ${
           isVictory ? 'border-emerald-500/50 shadow-emerald-900/30' : 'border-rose-600/50 shadow-rose-900/30'
-        } rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]`}
+        } rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85dvh] my-auto`}
       >
         {/* Modal Header */}
         <div

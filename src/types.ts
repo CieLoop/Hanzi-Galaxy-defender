@@ -1,3 +1,9 @@
+export interface ExampleSentence {
+  hanzi: string;
+  pinyin: string;
+  english: string;
+}
+
 export interface HanziWord {
   id: string;
   hanzi: string;
@@ -6,8 +12,9 @@ export interface HanziWord {
   pinyinNumbered?: string; // e.g. "ni3hao3"
   pinyinSpaced?: string; // e.g. "ni hao"
   english: string;
-  hskLevel?: number; // 1-6
+  hskLevel?: number; // 1-7
   category?: string;
+  exampleSentence?: ExampleSentence;
 }
 
 export interface ActiveProjectile {
@@ -61,9 +68,9 @@ export interface FloatingText {
   scale?: number;
 }
 
-export type GameState = 'menu' | 'playing' | 'paused' | 'level_complete' | 'game_over' | 'victory';
+export type GameState = 'menu' | 'playing' | 'paused' | 'level_complete' | 'game_over' | 'victory' | 'flashcards';
 
-export type GameMode = 'campaign' | 'endless' | 'practice' | 'custom';
+export type GameMode = 'campaign' | 'endless' | 'practice' | 'custom' | 'flashcards';
 
 export interface GameSettings {
   soundEnabled: boolean;
