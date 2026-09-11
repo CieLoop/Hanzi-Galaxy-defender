@@ -1,171 +1,299 @@
 import { HanziWord, ExampleSentence } from '../types';
 
-// Curated high-yield authentic example sentences for HSK words
+/**
+ * Curated authentic example sentences tailored directly to the learner's HSK level:
+ * - HSK 1: Very short (3-6 chars), basic grammar (S+V+O / S+Adj), everyday beginner vocabulary.
+ * - HSK 2: Short daily conversational sentences (5-9 chars), simple practical situations.
+ * - HSK 3: Clear intermediate phrases (7-12 chars), natural everyday topics.
+ * - HSK 4: Upper-intermediate sentences with common idioms and practical expressions.
+ * - HSK 5: Advanced practical sentences for work and discussion.
+ * - HSK 6: Proficient sentences with nuanced vocabulary.
+ * - HSK 7-9: Literary expressions and traditional idioms (Chengyu).
+ */
 export const CURATED_SENTENCES: Record<string, ExampleSentence> = {
-  // HSK 1
-  '你': { hanzi: '你好，很高兴认识你！', pinyin: 'Nǐ hǎo, hěn gāoxìng rènshí nǐ!', english: 'Hello, nice to meet you!' },
-  '好': { hanzi: '今天天气非常好，阳光明媚。', pinyin: 'Jīntiān tiānqì fēicháng hǎo, yángguāng míngmèi.', english: 'The weather is very good today with bright sunshine.' },
-  '你好': { hanzi: '你好！欢迎来到中文学习课堂。', pinyin: 'Nǐ hǎo! Huānyíng láidào zhōngwén xuéxí kètáng.', english: 'Hello! Welcome to the Chinese learning classroom.' },
-  '我': { hanzi: '我是一名热心学习汉语的学生。', pinyin: 'Wǒ shì yì míng rèxīn xuéxí hànyǔ de xuésheng.', english: 'I am a student enthusiastic about learning Chinese.' },
-  '他': { hanzi: '他是我的大学同班同学。', pinyin: 'Tā shì wǒ de dàxué tóngbān tóngxué.', english: 'He is my university classmate.' },
-  '她': { hanzi: '她喜欢在周末去图书馆看书。', pinyin: 'Tā xǐhuan zài zhōumò qù túshūguǎn kàn shū.', english: 'She likes going to the library to read on weekends.' },
-  '我们': { hanzi: '我们一起去操场跑步吧。', pinyin: 'Wǒmen yìqǐ qù cāochǎng pǎobù ba.', english: 'Let us go running on the sports field together.' },
-  '他们': { hanzi: '他们正在热烈讨论刚才的考试。', pinyin: 'Tāmen zhèngzài rèliè tǎolùn gāngcái de kǎoshì.', english: 'They are enthusiastically discussing the recent test.' },
-  '是': { hanzi: '这本汉英词典是我的。', pinyin: 'Zhè běn hàn-yīng cídiǎn shì wǒ de.', english: 'This Chinese-English dictionary is mine.' },
-  '有': { hanzi: '桌子上有一杯热绿茶。', pinyin: 'Zhuōzi shàng yǒu yì bēi rè lǜchá.', english: 'There is a cup of hot green tea on the table.' },
-  '看': { hanzi: '我喜欢在傍晚看美丽的落日。', pinyin: 'Wǒ xǐhuan zài bàngwǎn kàn měilì de luòrì.', english: 'I enjoy watching the beautiful sunset in the evening.' },
-  '听': { hanzi: '请认真听老师讲解生词用法。', pinyin: 'Qǐng rènzhēn tīng lǎoshī jiǎngjiě shēngcí yòngfǎ.', english: 'Please listen carefully to the teacher explaining vocabulary usage.' },
-  '说': { hanzi: '他能说一口非常地道的普通话。', pinyin: 'Tā néng shuō yì kǒu fēicháng dìdao de pǔtōnghuà.', english: 'He can speak very authentic Mandarin.' },
-  '读': { hanzi: '每天清晨我都会大声朗读课文。', pinyin: 'Měitiān qīngchén wǒ dōuhuì dàshēng lǎngdú kèwén.', english: 'Every morning I read the lesson text aloud.' },
-  '写': { hanzi: '请在练习本上端正地写下汉字。', pinyin: 'Qǐng zài liànxíbìng shàng duānzhèng de xiě xià hànzì.', english: 'Please write down the Chinese characters neatly in the notebook.' },
-  '叫': { hanzi: '我叫李华，请多关照。', pinyin: 'Wǒ jiào Lǐ Huá, qǐng duō guānzhào.', english: 'My name is Li Hua, please take care of me.' },
-  '买': { hanzi: '我想买两张去北京的高铁票。', pinyin: 'Wǒ xiǎng mǎi liǎng zhāng qù Běijīng de gāotiě piào.', english: 'I want to buy two high-speed rail tickets to Beijing.' },
-  '吃': { hanzi: '中国北方人过年喜欢吃水饺。', pinyin: 'Zhōngguó běifāng rén guònián xǐhuan chī shuǐjiǎo.', english: 'People in northern China like eating dumplings during New Year.' },
-  '喝': { hanzi: '运动后喝一杯温开水对身体好。', pinyin: 'Yùndòng hòu hē yì bēi wēn kāishuǐ duì shēntǐ hǎo.', english: 'Drinking a cup of warm water after exercise is good for you.' },
-  '走': { hanzi: '晚饭后散步走一走有助于消化。', pinyin: 'Wǎnfàn hòu sànbù zǒu yì zǒu yǒuzhù yú xiāohuà.', english: 'Taking a walk after dinner helps with digestion.' },
-  '坐': { hanzi: '请坐在沙发上喝杯咖啡吧。', pinyin: 'Qǐng zuò zài shāfā shàng hē bēi kāfēi ba.', english: 'Please sit on the sofa and have a cup of coffee.' },
-  '来': { hanzi: '欢迎大家来我的家乡旅游。', pinyin: 'Huānyíng dàjiā lái wǒ de jiāxiāng lǚyóu.', english: 'Welcome everyone to visit my hometown.' },
-  '去': { hanzi: '周末我们打算去故宫博物院参观。', pinyin: 'Zhōumò wǒmen dǎsuàn qù Gùgōng Bówùyuàn cānguān.', english: 'We plan to go visit the Palace Museum this weekend.' },
-  '做': { hanzi: '你将来最想做哪方面的工作？', pinyin: 'Nǐ jiānglái zuì xiǎng zuò nǎ fāngmiàn de gōngzuò?', english: 'What line of work do you most want to do in the future?' },
-  '想': { hanzi: '我想通过努力考过汉语六级。', pinyin: 'Wǒ xiǎng tōngguò nǔlì kǎoguò hànyǔ liù jí.', english: 'I want to pass HSK Level 6 through hard work.' },
-  '水': { hanzi: '人体每天都需要补充充足的水分。', pinyin: 'Réntǐ měitiān dōu xūyào bǔchōng chōngzú de shuǐfèn.', english: 'The human body needs to replenish adequate water daily.' },
-  '茶': { hanzi: '中国传统的茶文化博大精深。', pinyin: 'Zhōngguó chuántǒng de chá wénhuà bódà jīngshēn.', english: 'Traditional Chinese tea culture is broad and profound.' },
-  '米饭': { hanzi: '红烧牛肉配香喷喷的米饭太香了。', pinyin: 'Hóngshāo niúròu pèi xiāngpēnpēn de mǐfàn tài xiāng le.', english: 'Braised beef paired with fragrant rice is so delicious.' },
-  '爸爸': { hanzi: '爸爸每天辛勤工作支持着全家。', pinyin: 'Bàba měitiān xīnqín gōngzuò zhīchízhe quánjiā.', english: 'Father works diligently every day to support the whole family.' },
-  '妈妈': { hanzi: '妈妈经常提醒我注意劳逸结合。', pinyin: 'Māma jīngcháng tíxǐng wǒ zhùyì láoyì jiéhé.', english: 'Mother often reminds me to balance work and rest.' },
-  '儿子': { hanzi: '他的儿子聪明好学，成绩优异。', pinyin: 'Tā de érzi cōngmíng hàoxué, chéngjì yōuyì.', english: 'His son is smart, eager to learn, and achieves top marks.' },
-  '女儿': { hanzi: '女儿弹起钢琴来格外专注动情。', pinyin: 'Nǚ\'ér tán qǐ gāngqín lái géwài zhuānzhù dòngqíng.', english: 'The daughter plays the piano with extraordinary focus and passion.' },
-  '朋友': { hanzi: '真诚的朋友会在你遇到困难时伸出援手。', pinyin: 'Zhēnchéng de péngyou huì zài nǐ yùdào kùnnan shí shēnchū yuánshǒu.', english: 'A true friend extends a helping hand when you are in trouble.' },
-  '老师': { hanzi: '张老师用生动的例子帮助大家理解语法。', pinyin: 'Zhāng lǎoshī yòng shēngdòng de lìzi bāngzhù dàjiā lǐjiě yǔfǎ.', english: 'Teacher Zhang helps everyone understand grammar with lively examples.' },
-  '学生': { hanzi: '这里的每一位学生都富有探索精神。', pinyin: 'Zhèlǐ de měi yí wèi xuésheng dōu fùyǒu tànsuǒ jīngshén.', english: 'Every student here is rich in exploring spirit.' },
-  '中国': { hanzi: '中国是一个拥有五千年文明历史的古国。', pinyin: 'Zhōngguó shì yí gè yǒngyǒu wǔqiān nián wénmíng lìshǐ de gǔguó.', english: 'China is an ancient country with 5,000 years of civilization history.' },
-  '北京': { hanzi: '北京既有厚重的古迹，又有现代化的繁华。', pinyin: 'Běijīng jì yǒu hòuzhòng de gǔjì, yòu yǒu xiàndàihuà de fánhuá.', english: 'Beijing boasts both rich historical relics and modern bustle.' },
-  '钱': { hanzi: '知识是比金钱更为宝贵的财富。', pinyin: 'Zhīshi shì bǐ jīnqián gèngwéi bǎoguì de cáifù.', english: 'Knowledge is wealth more precious than money.' },
-  '今天': { hanzi: '今天我们要把这一章节的内容全部复习完。', pinyin: 'Jīntiān wǒmen yào bǎ zhè yì zhāngjié de nèiróng quánbù fùxí wán.', english: 'Today we will review all the contents of this chapter.' },
-  '明天': { hanzi: '把握好今天，明天才会更加美好光明。', pinyin: 'Bǎwò hǎo jīntiān, míngtiān cái huì gèngjiā měihǎo guāngmíng.', english: 'Seize today, and tomorrow will be even brighter.' },
-  '昨天': { hanzi: '昨天的精彩讲座让我受益匪浅。', pinyin: 'Zuótiān de jīngcǎi jiǎngzuò ràng wǒ shòuyì fěi qiǎn.', english: 'Yesterday\'s splendid lecture benefited me tremendously.' },
-  '年': { hanzi: '经过一整年的苦练，他的中文突飞猛进。', pinyin: 'Jīngguò yì zhěng nián de kǔliàn, tā de zhōngwén tūfēi-měngjìn.', english: 'After a full year of hard practice, his Chinese advanced by leaps and bounds.' },
-  '月': { hanzi: '中秋之夜的圆月格外皎洁明朗。', pinyin: 'Zhōngqiū zhī yè de yuányuè géwài jiǎojié mínglǎng.', english: 'The round moon on Mid-Autumn night is exceptionally bright.' },
-  '日': { hanzi: '五月四日是充满朝气的青年节。', pinyin: 'Wǔ yuè sì rì shì chōngmǎn zhāoqì de qīngnián jié.', english: 'May 4th is the energetic Youth Day.' },
-  '猫': { hanzi: '那只温顺的小花猫在阳光下打瞌睡。', pinyin: 'Nà zhī wēnshùn de xiǎohuāmāo zài yángguāng xià dǎ kēshuì.', english: 'That gentle calico cat is dozing under the sunlight.' },
-  '书': { hanzi: '经常翻阅好书能开阔人们的心胸与眼界。', pinyin: 'Jīngcháng fānyuè hǎo shū néng kāikuò rénmen de xīnxiōng yǔ yǎnjiè.', english: 'Reading good books regularly broadens one\'s mind and horizons.' },
-  '飞机': { hanzi: '飞机划过晴朗的蓝天，留下一道白线。', pinyin: 'Fēijī huàguò qínglǎng de lántiān, liúxià yí dào bái xiàn.', english: 'The plane cut across the clear blue sky, leaving a white streak.' },
-  '谢谢': { hanzi: '谢谢你在学习上给予我的无私帮助。', pinyin: 'Xièxie nǐ zài xuéxí shàng jǐyǔ wǒ de wúsī bāngzhù.', english: 'Thank you for your selfless help in my studies.' },
-  '不客气': { hanzi: '朋友之间互相支持理所应当，不用客气！', pinyin: 'Péngyou zhījiān hùxiāng zhīchí lǐsuǒyīngdāng, bú yòng kèqi!', english: 'Mutual support between friends is natural, you\'re welcome!' },
-  '再见': { hanzi: '期待与你下次相聚，大家再见！', pinyin: 'Qīdài yǔ nǐ xià cì xiāngjù, dàjiā zàijiàn!', english: 'Looking forward to meeting you next time, goodbye everyone!' },
+  // === HSK 1: Core Basics (Simple 3-6 words, beginner vocabulary) ===
+  '你': { hanzi: '你好！很高兴认识你。', pinyin: 'Nǐ hǎo! Hěn gāoxìng rènshí nǐ.', english: 'Hello! Nice to meet you.' },
+  '好': { hanzi: '今天天气很好。', pinyin: 'Jīntiān tiānqì hěn hǎo.', english: 'The weather is very good today.' },
+  '你好': { hanzi: '你好，老师！', pinyin: 'Nǐ hǎo, lǎoshī!', english: 'Hello, teacher!' },
+  '我': { hanzi: '我是学生。', pinyin: 'Wǒ shì xuésheng.', english: 'I am a student.' },
+  '他': { hanzi: '他是我的好朋友。', pinyin: 'Tā shì wǒ de hǎo péngyou.', english: 'He is my good friend.' },
+  '她': { hanzi: '她喜欢看书。', pinyin: 'Tā xǐhuan kàn shū.', english: 'She likes reading books.' },
+  '我们': { hanzi: '我们一起去学校。', pinyin: 'Wǒmen yìqǐ qù xuéxiào.', english: 'We go to school together.' },
+  '他们': { hanzi: '他们都在中国。', pinyin: 'Tāmen dōu zài Zhōngguó.', english: 'They are all in China.' },
+  '是': { hanzi: '这是我的书。', pinyin: 'Zhè shì wǒ de shū.', english: 'This is my book.' },
+  '不': { hanzi: '我不喝咖啡。', pinyin: 'Wǒ bù hē kāfēi.', english: 'I do not drink coffee.' },
+  '有': { hanzi: '我有一只小猫。', pinyin: 'Wǒ yǒu yì zhī xiǎo māo.', english: 'I have a little cat.' },
+  '看': { hanzi: '我看中国电影。', pinyin: 'Wǒ kàn Zhōngguó diànyǐng.', english: 'I watch Chinese movies.' },
+  '听': { hanzi: '请听老师说。', pinyin: 'Qǐng tīng lǎoshī shuō.', english: 'Please listen to the teacher speak.' },
+  '说': { hanzi: '他说中文。', pinyin: 'Tā shuō zhōngwén.', english: 'He speaks Chinese.' },
+  '读': { hanzi: '我们一起读课文。', pinyin: 'Wǒmen yìqǐ dú kèwén.', english: 'Let us read the lesson text together.' },
+  '写': { hanzi: '我会写汉字。', pinyin: 'Wǒ huì xiě hànzì.', english: 'I can write Chinese characters.' },
+  '叫': { hanzi: '我叫大卫。', pinyin: 'Wǒ jiào Dàwèi.', english: 'My name is David.' },
+  '买': { hanzi: '我想买一个苹果。', pinyin: 'Wǒ xiǎng mǎi yí gè píngguǒ.', english: 'I want to buy an apple.' },
+  '吃': { hanzi: '我喜欢吃米饭。', pinyin: 'Wǒ xǐhuan chī mǐfàn.', english: 'I like eating rice.' },
+  '喝': { hanzi: '请喝温水。', pinyin: 'Qǐng hē wēn shuǐ.', english: 'Please drink warm water.' },
+  '走': { hanzi: '我们慢慢走。', pinyin: 'Wǒmen mànmàn zǒu.', english: 'We walk slowly.' },
+  '坐': { hanzi: '请坐，喝茶。', pinyin: 'Qǐng zuò, hē chá.', english: 'Please sit down and drink tea.' },
+  '来': { hanzi: '欢迎来北京！', pinyin: 'Huānyíng lái Běijīng!', english: 'Welcome to Beijing!' },
+  '去': { hanzi: '他去商店了。', pinyin: 'Tā qù shāngdiàn le.', english: 'He went to the shop.' },
+  '做': { hanzi: '你在做什么？', pinyin: 'Nǐ zài zuò shénme?', english: 'What are you doing?' },
+  '想': { hanzi: '我想学中文。', pinyin: 'Wǒ xiǎng xué zhōngwén.', english: 'I want to learn Chinese.' },
+  '水': { hanzi: '我想喝水。', pinyin: 'Wǒ xiǎng hē shuǐ.', english: 'I want to drink water.' },
+  '火': { hanzi: '小心火，很热。', pinyin: 'Xiǎoxīn huǒ, hěn rè.', english: 'Be careful with fire, it is hot.' },
+  '茶': { hanzi: '爸爸喜欢喝茶。', pinyin: 'Bàba xǐhuan hē chá.', english: 'Dad likes drinking tea.' },
+  '米饭': { hanzi: '我们吃米饭吧。', pinyin: 'Wǒmen chī mǐfàn ba.', english: 'Let us eat rice.' },
+  '苹果': { hanzi: '这个苹果很甜。', pinyin: 'Zhè gè píngguǒ hěn tián.', english: 'This apple is very sweet.' },
+  '中国': { hanzi: '中国很大。', pinyin: 'Zhōngguó hěn dà.', english: 'China is very big.' },
+  '北京': { hanzi: '他在北京上大学。', pinyin: 'Tā zài Běijīng shàng dàxué.', english: 'He attends university in Beijing.' },
+  '学校': { hanzi: '这是我的学校。', pinyin: 'Zhè shì wǒ de xuéxiào.', english: 'This is my school.' },
+  '老师': { hanzi: '张老师好！', pinyin: 'Zhāng lǎoshī hǎo!', english: 'Hello, Teacher Zhang!' },
+  '学生': { hanzi: '我们都是好学生。', pinyin: 'Wǒmen dōu shì hǎo xuésheng.', english: 'We are all good students.' },
+  '朋友': { hanzi: '他是我的好朋友。', pinyin: 'Tā shì wǒ de hǎo péngyou.', english: 'He is my good friend.' },
+  '医生': { hanzi: '妈妈是医生。', pinyin: 'Māma shì yīshēng.', english: 'Mom is a doctor.' },
+  '爸爸': { hanzi: '爸爸去上班了。', pinyin: 'Bàba qù shàngbān le.', english: 'Dad went to work.' },
+  '妈妈': { hanzi: '妈妈爱我。', pinyin: 'Māma ài wǒ.', english: 'Mom loves me.' },
+  '儿子': { hanzi: '他的儿子五岁了。', pinyin: 'Tā de érzi wǔ suì le.', english: 'His son is five years old.' },
+  '女儿': { hanzi: '她的女儿很聪明。', pinyin: 'Tā de nǚ\'ér hěn cōngming.', english: 'Her daughter is very smart.' },
+  '猫': { hanzi: '这只猫很可爱。', pinyin: 'Zhè zhī māo hěn kě\'ài.', english: 'This cat is very cute.' },
+  '狗': { hanzi: '我家有一只小狗。', pinyin: 'Wǒ jiā yǒu yì zhī xiǎogǒu.', english: 'My family has a little puppy.' },
+  '大': { hanzi: '这个西瓜很大。', pinyin: 'Zhè gè xīguā hěn dà.', english: 'This watermelon is big.' },
+  '小': { hanzi: '这只鸟很小。', pinyin: 'Zhè zhī niǎo hěn xiǎo.', english: 'This bird is small.' },
+  '多': { hanzi: '今天人很多。', pinyin: 'Jīntiān rén hěn duō.', english: 'There are many people today.' },
+  '少': { hanzi: '这里的车很少。', pinyin: 'Zhèlǐ de chē hěn shǎo.', english: 'There are very few cars here.' },
+  '冷': { hanzi: '今天很冷。', pinyin: 'Jīntiān hěn lěng.', english: 'Today is cold.' },
+  '热': { hanzi: '夏天天气很热。', pinyin: 'Xiàtiān tiānqì hěn rè.', english: 'In summer the weather is hot.' },
+  '高兴': { hanzi: '今天我很高兴。', pinyin: 'Jīntiān wǒ hěn gāoxìng.', english: 'Today I am very happy.' },
+  '今天': { hanzi: '今天星期一。', pinyin: 'Jīntiān xīngqīyī.', english: 'Today is Monday.' },
+  '明天': { hanzi: '明天见！', pinyin: 'Míngtiān jiàn!', english: 'See you tomorrow!' },
+  '昨天': { hanzi: '昨天是晴天。', pinyin: 'Zuótiān shì qíngtiān.', english: 'Yesterday was sunny.' },
+  '年': { hanzi: '一年有十二个月。', pinyin: 'Yì nián yǒu shí\'èr gè yuè.', english: 'A year has twelve months.' },
+  '月': { hanzi: '这个月我很忙。', pinyin: 'Zhè gè yuè wǒ hěn máng.', english: 'I am busy this month.' },
+  '日': { hanzi: '今天是十月一日。', pinyin: 'Jīntiān shì shí yuè yī rì.', english: 'Today is October 1st.' },
+  '书': { hanzi: '这是一本好书。', pinyin: 'Zhè shì yì běn hǎo shū.', english: 'This is a good book.' },
+  '飞机': { hanzi: '我坐飞机去北京。', pinyin: 'Wǒ zuò fēijī qù Běijīng.', english: 'I take a plane to Beijing.' },
+  '谢谢': { hanzi: '谢谢你帮我！', pinyin: 'Xièxie nǐ bāng wǒ!', english: 'Thank you for helping me!' },
+  '不客气': { hanzi: '不客气，请进！', pinyin: 'Bú kèqi, qǐng jìn!', english: 'You are welcome, please come in!' },
+  '再见': { hanzi: '明天见，再见！', pinyin: 'Míngtiān jiàn, zàijiàn!', english: 'See you tomorrow, goodbye!' },
+  '对不起': { hanzi: '对不起，我来晚了。', pinyin: 'Duìbuqǐ, wǒ lái wǎn le.', english: 'Sorry, I came late.' },
+  '没关系': { hanzi: '没关系，别担心。', pinyin: 'Méi guānxi, bié dānxīn.', english: 'It does not matter, do not worry.' },
 
-  // HSK 2
-  '帮助': { hanzi: '老师的热心帮助让他重拾了学习信心。', pinyin: 'Lǎoshī de rèxīn bāngzhù ràng tā chóngshí le xuéxí xìnxīn.', english: 'The teacher\'s warm help restored his confidence in learning.' },
-  '旅游': { hanzi: '趁着假期去名胜古迹旅游能拓宽视野。', pinyin: 'Chènzhe jiàqī qù míngshèng gǔjì lǚyóu néng tuòkuān shìyě.', english: 'Traveling to historical sites during holidays broadens horizons.' },
-  '公共汽车': { hanzi: '乘坐公共汽车绿色出行既便捷又省钱。', pinyin: 'Chéngzuò gōnggòng qìchē lǜsè chūxíng jì biànjié yòu shěngqián.', english: 'Taking the public bus for green travel is both convenient and economical.' },
-  '自行车': { hanzi: '校园里许多同学都喜欢骑自行车去上课。', pinyin: 'Xiàoyuán lǐ xǔduō tóngxué dōu xǐhuan qí zìxíngchē qù shàngkè.', english: 'Many students on campus like riding bicycles to class.' },
-  '医院': { hanzi: '感觉身体不舒服时一定要及时去医院检查。', pinyin: 'Gǎnjué shēntǐ bù shūfu shí yídìng yào jíshí qù yīyuàn jiǎnchá.', english: 'When feeling unwell, be sure to visit the hospital for a checkup promptly.' },
-  '饭馆': { hanzi: '学校附近那家川菜饭馆味道十分正宗。', pinyin: 'Xuéxiào fùjìn nà jiā chuāncài fànguǎn wèidào shífēn zhèngzōng.', english: 'That Sichuan restaurant near the school has very authentic flavors.' },
-  '生病': { hanzi: '生病期间要多喝温水，保证充足休息。', pinyin: 'Shēngbìng qījiān yào duō hē wēn shuǐ, bǎozhèng chōngzú xiūxi.', english: 'During illness, drink plenty of warm water and ensure adequate rest.' },
-  '身体': { hanzi: '坚持体育锻炼是保持身体健康的关键。', pinyin: 'Jiānchí tǐyù duànliàn shì bǎochí shēntǐ jiànkāng de guānjiàn.', english: 'Persisting in physical exercise is key to maintaining good health.' },
-  '准备': { hanzi: '充分的准备是取得考试成功的基石。', pinyin: 'Chōngfèn de zhǔnbèi shì qǔdé kǎoshì chénggōng de jīshí.', english: 'Adequate preparation is the cornerstone of passing tests.' },
-  '懂': { hanzi: '经过老师生动形象的拆解，大家都听懂了。', pinyin: 'Jīngguò lǎoshī shēngdòng xíngxiàng de chāijiě, dàjiā dōu tīngdǒng le.', english: 'Through the teacher\'s vivid breakdown, everyone understood.' },
-  '结束': { hanzi: '随着下课铃声敲响，今天的课程圆满结束。', pinyin: 'Suízhe xiàkè língshēng qiāoxiǎng, jīntiān de kèchéng yuánmǎn jiéshù.', english: 'As the dismissal bell rang, today\'s classes wrapped up successfully.' },
-  '火车站': { hanzi: '我们在新建的高铁火车站东出口集合。', pinyin: 'Wǒmen zài xīnjiàn de gāotiě huǒchēzhàn dōng chūkǒu jíhé.', english: 'Let\'s gather at the east exit of the newly built high-speed train station.' },
-  '机场': { hanzi: '前往国际机场前记得核对好护照和行李。', pinyin: 'Qiánwǎng guójì jīchǎng qián jìde héduì hǎo hùzhào hé xíngli.', english: 'Before heading to the international airport, double-check your passport and luggage.' },
+  // === HSK 2: Elementary (Everyday conversational, 5-9 words) ===
+  '帮助': { hanzi: '谢谢你的帮助。', pinyin: 'Xièxie nǐ de bāngzhù.', english: 'Thank you for your help.' },
+  '唱歌': { hanzi: '她很喜欢唱歌。', pinyin: 'Tā hěn xǐhuan chànggē.', english: 'She likes singing very much.' },
+  '跳舞': { hanzi: '我们一起跳舞吧！', pinyin: 'Wǒmen yìqǐ tiàowǔ ba!', english: 'Let us dance together!' },
+  '旅游': { hanzi: '我想去中国旅游。', pinyin: 'Wǒ xiǎng qù Zhōngguó lǚyóu.', english: 'I want to travel to China.' },
+  '运动': { hanzi: '多做运动身体好。', pinyin: 'Duō zuò yùndòng shēntǐ hǎo.', english: 'Doing more exercise is good for health.' },
+  '跑步': { hanzi: '他每天早上在公园跑步。', pinyin: 'Tā měitiān zǎoshang zài gōngyuán pǎobù.', english: 'He jogs in the park every morning.' },
+  '游泳': { hanzi: '夏天我们去游泳吧。', pinyin: 'Xiàtiān wǒmen qù yóuyǒng ba.', english: 'Let us go swimming in summer.' },
+  '时间': { hanzi: '你现在有时间吗？', pinyin: 'Nǐ xiànzài yǒu shíjiān ma?', english: 'Do you have time right now?' },
+  '手表': { hanzi: '这块手表很漂亮。', pinyin: 'Zhè kuài shǒubiǎo hěn piàoliang.', english: 'This watch is very pretty.' },
+  '手机': { hanzi: '我的手机没电了。', pinyin: 'Wǒ de shǒujī méi diàn le.', english: 'My phone has run out of battery.' },
+  '电脑': { hanzi: '他用电脑做作业。', pinyin: 'Tā yòng diànnǎo zuò zuòyè.', english: 'He uses the computer to do homework.' },
+  '电影': { hanzi: '今晚我们去看电影吧。', pinyin: 'Jīnwǎn wǒmen qù kàn diànyǐng ba.', english: 'Let us go watch a movie tonight.' },
+  '天气': { hanzi: '今天天气真好。', pinyin: 'Jīntiān tiānqì zhēn hǎo.', english: 'The weather is really nice today.' },
+  '下雨': { hanzi: '外面下雨了，带把伞。', pinyin: 'Wàimiàn xiàyǔ le, dài bǎ sǎn.', english: 'It is raining outside, take an umbrella.' },
+  '晴天': { hanzi: '明天是晴天，可以去公园。', pinyin: 'Míngtiān shì qíngtiān, kěyǐ qù gōngyuán.', english: 'Tomorrow is sunny, we can go to the park.' },
+  '便宜': { hanzi: '这件衣服很便宜。', pinyin: 'Zhè jiàn yīfu hěn piányi.', english: 'This piece of clothing is cheap.' },
+  '贵': { hanzi: '这个手机太贵了。', pinyin: 'Zhè gè shǒujī tài guì le.', english: 'This phone is too expensive.' },
+  '准备': { hanzi: '你准备好了吗？', pinyin: 'Nǐ zhǔnbèi hǎo le ma?', english: 'Are you ready?' },
+  '希望': { hanzi: '我希望能学好中文。', pinyin: 'Wǒ xīwàng néng xuéhǎo zhōngwén.', english: 'I hope I can learn Chinese well.' },
+  '开始': { hanzi: '我们开始上课吧。', pinyin: 'Wǒmen kāishǐ shàngkè ba.', english: 'Let us start class now.' },
+  '结束': { hanzi: '考试很快就结束了。', pinyin: 'Kǎoshì hěn kuài jiù jiéshù le.', english: 'The exam finished very quickly.' },
+  '火车站': { hanzi: '我们在火车站门口见。', pinyin: 'Wǒmen zài huǒchēzhàn ménkǒu jiàn.', english: 'See you at the train station entrance.' },
+  '机场': { hanzi: '他坐出租车去机场接朋友。', pinyin: 'Tā zuò chūzūchē qù jīchǎng jiē péngyou.', english: 'He took a taxi to the airport to meet a friend.' },
+  '公共汽车': { hanzi: '我每天坐公共汽车上班。', pinyin: 'Wǒ měitiān zuò gōnggòng qìchē shàngbān.', english: 'I take the bus to work every day.' },
+  '自行车': { hanzi: '哥哥骑自行车去上学。', pinyin: 'Gēge qí zìxíngchē qù shàngxué.', english: 'Older brother rides a bicycle to school.' },
+  '医院': { hanzi: '身体不舒服要去医院看医生。', pinyin: 'Shēntǐ bù shūfu yào qù yīyuàn kàn yīshēng.', english: 'If you feel unwell, go to the hospital to see a doctor.' },
+  '饭馆': { hanzi: '我们去那家饭馆吃午饭吧。', pinyin: 'Wǒmen qù nà jiā fànguǎn chī wǔfàn ba.', english: 'Let us go eat lunch at that restaurant.' },
+  '生病': { hanzi: '他生病了，在家里休息。', pinyin: 'Tā shēngbìng le, zài jiālǐ xiūxi.', english: 'He is sick and resting at home.' },
+  '身体': { hanzi: '祝你身体健康！', pinyin: 'Zhù nǐ shēntǐ jiànkāng!', english: 'Wish you good health!' },
+  '药': { hanzi: '记得按时吃药。', pinyin: 'Jìde ànshí chī yào.', english: 'Remember to take your medicine on time.' },
+  '休息': { hanzi: '累了就去休息一会儿。', pinyin: 'Lèi le jiù qù xiūxi yíhuìr.', english: 'Go rest for a while if you are tired.' },
+  '起床': { hanzi: '我每天早上七点起床。', pinyin: 'Wǒ měitiān zǎoshang qī diǎn qǐchuáng.', english: 'I get up at 7:00 every morning.' },
+  '睡觉': { hanzi: '时间不早了，快去睡觉。', pinyin: 'Shíjiān bù zǎo le, kuài qù shuìjiào.', english: 'It is late, quickly go to sleep.' },
+  '穿': { hanzi: '今天很冷，多穿件衣服。', pinyin: 'Jīntiān hěn lěng, duō chuān jiàn yīfu.', english: 'It is cold today, put on an extra layer.' },
+  '衣服': { hanzi: '这件衣服很好看。', pinyin: 'Zhè jiàn yīfu hěn hǎokàn.', english: 'This piece of clothing looks very nice.' },
+  '妻子': { hanzi: '他和妻子一起散步。', pinyin: 'Tā hé qīzi yìqǐ sànbù.', english: 'He takes a walk together with his wife.' },
+  '丈夫': { hanzi: '她的丈夫是一位工程师。', pinyin: 'Tā de zhàngfu shì yí wèi gōngchéngshī.', english: 'Her husband is an engineer.' },
+  '懂': { hanzi: '老师讲的话，我都听懂了。', pinyin: 'Lǎoshī jiǎng de huà, wǒ dōu tīngdǒng le.', english: 'I understood everything the teacher explained.' },
 
-  // HSK 3
-  '环境': { hanzi: '保护自然生态环境是每个公民的责任。', pinyin: 'Bǎohù zìrán shēngtài huánjìng shì měi gè gōngmín de zérèn.', english: 'Protecting the natural ecological environment is the responsibility of every citizen.' },
-  '解决': { hanzi: '通过深入沟通，团队顺利解决了技术难题。', pinyin: 'Tōngguò shēnrù gōutōng, tuánduì shùnlì jiějué le jìshù nántí.', english: 'Through in-depth communication, the team smoothly resolved technical hurdles.' },
-  '历史': { hanzi: '阅读历史能让我们从过去中汲取智慧。', pinyin: 'Yuèdú lìshǐ néng ràng wǒmen cóng guòqù zhōng jíqǔ zhìhuì.', english: 'Reading history allows us to draw wisdom from the past.' },
-  '决定': { hanzi: '他经过慎重考虑，决定去中国攻读硕士。', pinyin: 'Tā jīngguò shènzhòng kǎolǜ, juédìng qù Zhōngguó gōngdú shuòshì.', english: 'After careful consideration, he decided to study for a master\'s in China.' },
-  '努力': { hanzi: '只要坚持努力，就一定能攻克汉语难关。', pinyin: 'Zhǐyào jiānchí nǔlì, jiù yídìng néng gōngkè hànyǔ nánguān.', english: 'As long as you persist with effort, you can surely overcome Chinese difficulties.' },
-  '清楚': { hanzi: '老师把重点语法规则讲解得非常清楚明白。', pinyin: 'Lǎoshī bǎ zhòngdiǎn yǔfǎ guīzé jiǎngjiě de fēicháng qīngchu míngbai.', english: 'The teacher explained the key grammar rules very clearly and lucidly.' },
-  '习惯': { hanzi: '养成早睡早起的好习惯有利于身体健康。', pinyin: 'Yǎngchéng zǎoshuì zǎoqǐ de hǎo xíguàn yǒulì yú shēntǐ jiànkāng.', english: 'Cultivating the habit of early to bed and early to rise benefits health.' },
-  '提高': { hanzi: '每天坚持听汉语广播能有效提高听力水平。', pinyin: 'Měitiān jiānchí tīng hànyǔ guǎngbō néng yǒuxiào tígāo tīnglì shuǐpíng.', english: 'Listening to Chinese radio daily effectively elevates listening proficiency.' },
+  // === HSK 3: Intermediate (Clear, natural everyday context) ===
+  '环境': { hanzi: '我们学校的环境非常安静。', pinyin: 'Wǒmen xuéxiào de huánjìng fēicháng ānjìng.', english: 'Our school\'s environment is very quiet.' },
+  '解决': { hanzi: '这个问题很容易解决。', pinyin: 'Zhè gè wèntí hěn róngyì jiějué.', english: 'This problem is easy to solve.' },
+  '历史': { hanzi: '我对中国历史很感兴趣。', pinyin: 'Wǒ duì Zhōngguó lìshǐ hěn gǎn xìngqù.', english: 'I am very interested in Chinese history.' },
+  '努力': { hanzi: '只要努力学习，就会有进步。', pinyin: 'Zhǐyào nǔlì xuéxí, jiù huì yǒu jìnbù.', english: 'As long as you study hard, you will make progress.' },
+  '热情': { hanzi: '这里的朋友都很热情。', pinyin: 'Zhèlǐ de péngyou dōu hěn rèqíng.', english: 'The friends here are all very enthusiastic.' },
+  '聪明': { hanzi: '小明是一个聪明的孩子。', pinyin: 'Xiǎomíng shì yí gè cōngming de háizi.', english: 'Xiaoming is a clever child.' },
+  '简单': { hanzi: '这次考试的题目挺简单的。', pinyin: 'Zhè cì kǎoshì de tímù tǐng jiǎndān de.', english: 'The questions on this test were quite simple.' },
+  '健康': { hanzi: '多吃水果蔬菜有利于健康。', pinyin: 'Duō chī shuǐguǒ shūcài yǒulì yú jiànkāng.', english: 'Eating more fruits and vegetables benefits health.' },
+  '满意': { hanzi: '老师对我的考试成绩很满意。', pinyin: 'Lǎoshī duì wǒ de kǎoshì chéngjì hěn mǎnyì.', english: 'The teacher is very pleased with my test score.' },
+  '相信': { hanzi: '我相信你一定能做到。', pinyin: 'Wǒ xiāngxìn nǐ yídìng néng zuòdào.', english: 'I believe you can definitely do it.' },
+  '决定': { hanzi: '我决定下个月去旅行。', pinyin: 'Wǒ juédìng xià gè yuè qù lǚxíng.', english: 'I decided to go on a trip next month.' },
+  '清楚': { hanzi: '黑板上的字写得很清楚。', pinyin: 'Hēibǎn shàng de zì xiě de hěn qīngchu.', english: 'The words on the blackboard are written very clearly.' },
+  '习惯': { hanzi: '我习惯每天早起看书。', pinyin: 'Wǒ xíguàn měitiān zǎoqǐ kàn shū.', english: 'I am used to getting up early every day to read.' },
+  '提高': { hanzi: '每天听中文广播能提高听力。', pinyin: 'Měitiān tīng zhōngwén guǎngbō néng tígāo tīnglì.', english: 'Listening to Chinese radio daily improves listening skills.' },
 
-  // HSK 4
-  '坚持': { hanzi: '贵在坚持，唯有日积月累方能成就卓越。', pinyin: 'Guì zài jiānchí, wéiyǒu rìjī-yuèlěi fāng néng chéngjiù zhuóyuè.', english: 'Value lies in persistence; only steady accumulation yields excellence.' },
-  '成功': { hanzi: '成功往往垂青那些做足充分准备的人。', pinyin: 'Chénggōng wǎngwǎng chuíqīng nàxiē zuòzú chōngfèn zhǔnbèi de rén.', english: 'Success often favors those who make thorough preparations.' },
-  '态度': { hanzi: '积极乐观的生活态度能帮助我们克服逆境。', pinyin: 'Jījí lèguān de shēnghuó tàidu néng bāngzhù wǒmen kèfú nìjìng.', english: 'A positive and optimistic attitude helps us overcome adversity.' },
-  '经验': { hanzi: '他在跨国商务交流方面积累了丰富的实战经验。', pinyin: 'Tā zài kuàguó shāngwù jiāoliú fāngmiàn jīlěi le fēngfù de shízhàn jīngyàn.', english: 'He accumulated rich practical experience in cross-border business.' },
-  '关键': { hanzi: '找到问题根源是推动项目解决的关键所在。', pinyin: 'Zhǎodào wèntí gēnyuán shì tuīdòng xiàngmù jiějué de guānjiàn suǒzài.', english: 'Finding the root cause is the key to advancing project resolution.' },
-  '考虑': { hanzi: '做重大决策时，必须全面考虑各方面影响。', pinyin: 'Zuò zhòngdà juécè shí, bìxū quánmiàn kǎolǜ gè fāngmiàn yǐngxiǎng.', english: 'When making major decisions, one must comprehensively consider all impacts.' },
+  // === HSK 4: Upper-Intermediate (Practical, expressive) ===
+  '坚持': { hanzi: '坚持每天练习，就会取得好成绩。', pinyin: 'Jiānchí měitiān liànxí, jiù huì qǔdé hǎo chéngjì.', english: 'Persisting in daily practice leads to good marks.' },
+  '成功': { hanzi: '经过大家的努力，活动圆满成功了。', pinyin: 'Jīngguò dàjiā de nǔlì, huódòng yuánmǎn chénggōng le.', english: 'Through everyone\'s effort, the event succeeded.' },
+  '态度': { hanzi: '认真的态度能帮助我们把事情做好。', pinyin: 'Rènzhēn de tàidu néng bāngzhù wǒmen bǎ shìqing zuò hǎo.', english: 'A serious attitude helps us do things well.' },
+  '经验': { hanzi: '老师在教学上有丰富的经验。', pinyin: 'Lǎoshī zài jiàoxué shàng yǒu fēngfù de jīngyàn.', english: 'The teacher has rich experience in teaching.' },
+  '关键': { hanzi: '找到问题的原因是解决它的关键。', pinyin: 'Zhǎodào wèntí de yuányīn shì jiějué tā de guānjiàn.', english: 'Finding the cause of the problem is key to solving it.' },
+  '考虑': { hanzi: '请大家认真考虑这个建议。', pinyin: 'Qǐng dàjiā rènzhēn kǎolǜ zhè gè jiànyì.', english: 'Please consider this suggestion seriously.' },
+  '安排': { hanzi: '今天的会议时间已经安排好了。', pinyin: 'Jīntiān de huìyì shíjiān yǐjīng ānpái hǎo le.', english: 'Today\'s meeting time has already been arranged.' },
+  '负责': { hanzi: '他是一个对工作非常负责的人。', pinyin: 'Tā shì yí gè duì gōngzuò fēicháng fùzé de rén.', english: 'He is someone who is very responsible about work.' },
 
-  // HSK 5
-  '把握': { hanzi: '青年人应当勇于探索，牢牢把握时代赋予的机遇。', pinyin: 'Qīngnián rén yīngdāng yǒngyú tànsuǒ, láoláo bǎwò shídài fùyǔ de jīyù.', english: 'Young people should explore courageously and firmly grasp the opportunities of our era.' },
-  '彼此': { hanzi: '团队成员之间坦诚相待，彼此充满信任。', pinyin: 'Tuánduì chéngyuán zhījiān tǎnchéng xiāngdài, bǐcǐ chōngmǎn xìnrèn.', english: 'Team members treat each other with candor, filled with mutual trust.' },
-  '效率': { hanzi: '优化工作流程大幅提高了团队的研发效率。', pinyin: 'Yōuhuà gōngzuò liúchéng dàfú tígāo le tuánduì de yánfā xiàolǜ.', english: 'Optimizing workflow substantially increased the team\'s R&D efficiency.' },
-  '趋势': { hanzi: '绿色低碳发展已成为不可逆转的世界潮流趋势。', pinyin: 'Lǜsè dītàn fāzhǎn yǐ chéngwéi bùkě nìzhuǎn de shìjiè cháoliú qūshì.', english: 'Green low-carbon development has become an irreversible global trend.' },
+  // === HSK 5: Advanced Fluency (Clear professional & formal usage) ===
+  '把握': { hanzi: '我们要把握好这次难得的学习机会。', pinyin: 'Wǒmen yào bǎwò hǎo zhè cì nándé de xuéxí jīhuì.', english: 'We must grasp this rare opportunity to learn.' },
+  '彼此': { hanzi: '朋友之间要彼此信任，互相支持。', pinyin: 'Péngyou zhījiān yào bǐcǐ xìnrèn, hùxiāng zhīchí.', english: 'Friends should trust each other and support each other.' },
+  '效率': { hanzi: '合理安排时间可以大大提高工作效率。', pinyin: 'Hélǐ ānpái shíjiān kěyǐ dàdà tígāo gōngzuò xiàolǜ.', english: 'Arranging time reasonably can greatly improve work efficiency.' },
+  '趋势': { hanzi: '绿色低碳出行是未来城市的发展趋势。', pinyin: 'Lǜsè dītàn chūxíng shì wèilái chéngshì de fāzhǎn qūshì.', english: 'Green low-carbon travel is the development trend of future cities.' },
+  '充分': { hanzi: '我们需要做好充分的准备来迎接挑战。', pinyin: 'Wǒmen xūyào zuò hǎo chōngfèn de zhǔnbèi lái yíngjiē tiǎozhàn.', english: 'We need to make ample preparations to meet the challenge.' },
 
-  // HSK 6
-  '崩溃': { hanzi: '在连番高压考验面前，他的防线并未崩溃。', pinyin: 'Zài liánfān gāoyā kǎoyàn miànqián, tā de fángxiàn bìng wèi bēngkuì.', english: 'Faced with continuous high-pressure tests, his defense did not crumble.' },
-  '和谐': { hanzi: '构建人与自然和谐共生的美好社会是共同愿景。', pinyin: 'Gòujiàn rén yǔ zìrán héxié gòngshēng de měihǎo shèhuì shì gòngtóng yuànjǐng.', english: 'Building a harmonious society where humans coexist with nature is a shared vision.' },
-  '捍卫': { hanzi: '学者应当坚守学术诚信，勇敢捍卫科学真理。', pinyin: 'Xuézhě yīngdāng jiānshǒu xuéshù chéngxìn, yǒnggǎn hànwèi kēxué zhēnlǐ.', english: 'Scholars should adhere to academic integrity and bravely defend scientific truth.' },
-  '宏观': { hanzi: '制定长远战略必须具备高瞻远瞩的宏观眼光。', pinyin: 'Zhìdìng chángyuǎn zhànlüè bìxū jùbèi gāozhān-yuǎnzhǔ de hóngguān yǎnguāng.', english: 'Formulating long-term strategy requires a far-sighted macroscopic vision.' },
+  // === HSK 6: Proficient (Rich vocabulary, natural prose) ===
+  '崩溃': { hanzi: '突发断电导致电脑系统暂时崩溃了。', pinyin: 'Tūfā duàndiàn dǎozhì diànnǎo xìtǒng zànshí bēngkuì le.', english: 'A sudden power outage caused the computer system to temporarily crash.' },
+  '和谐': { hanzi: '人与自然和谐共处是大家共同的心愿。', pinyin: 'Rén yǔ zìrán héxié gòngchǔ shì dàjiā gòngtóng de xīnyuàn.', english: 'Living in harmony between humans and nature is everyone\'s shared wish.' },
+  '捍卫': { hanzi: '每个人都应当勇敢捍卫自己的合法权益。', pinyin: 'Měi gè rén dōu yīngdāng yǒnggǎn hànwèi zìjǐ de héfǎ quányì.', english: 'Everyone should bravely defend their legitimate rights.' },
+  '宏观': { hanzi: '分析经济形势需要具备更宽广的宏观眼光。', pinyin: 'Fēnxī jīngjì xíngshì xūyào jùbèi gèng kuānguǎng de hóngguān yǎnguāng.', english: 'Analyzing economic trends requires a broader macroscopic perspective.' },
 
-  // HSK 7-9
-  '秉持': { hanzi: '我们始终秉持开放包容与合作共赢的原则。', pinyin: 'Wǒmen shǐzhōng bǐngchí kāifàng bāoróng yǔ hézuò gòngyíng de yuánzé.', english: 'We consistently uphold the principles of openness, inclusivity, and win-win cooperation.' },
-  '脉络': { hanzi: '理清思想发展脉络有助于把握学术核心。', pinyin: 'Lǐqīng sīxiǎng fāzhǎn màiluò yǒuzhù yú bǎwò xuéshù héxīn.', english: 'Clarifying the developmental thread of thought helps grasp the academic core.' },
-  '融会贯通': { hanzi: '唯有广博涉猎并融会贯通，方能融铸真知灼见。', pinyin: 'Wéiyǒu guǎngbó shèliè bìng rónghuì-guàntōng, fāng néng róngzhù zhēnzhī-zhuójiàn.', english: 'Only through broad reading and synthesis can one forge true insights.' },
-  '未雨绸缪': { hanzi: '面对复杂多变的市场环境，企业必须未雨绸缪做好储备。', pinyin: 'Miànduì fùzá duōbiàn de shìchǎng huánjìng, qǐyè bìxū wèiyǔ-chóumóu zuòhǎo chǔbèi.', english: 'Facing a volatile market environment, enterprises must take precautions beforehand.' },
-  '潜移默化': { hanzi: '优良的家风在潜移默化中塑造着年轻一代的品格。', pinyin: 'Yōuliáng de jiāfēng zài qiányí-mòhuà zhōng sùzàozhe niánqīng yí dài de pǐngé.', english: 'Exemplary family traditions imperceptibly shape the character of the younger generation.' },
+  // === HSK 7-9: Mastery & Idioms (Chengyu, literary nuance) ===
+  '秉持': { hanzi: '我们始终秉持诚实守信与合作共赢的原则。', pinyin: 'Wǒmen shǐzhōng bǐngchí chéngshí-shǒuxìn yǔ hézuò-gòngyíng de yuánzé.', english: 'We consistently uphold the principles of honesty and win-win cooperation.' },
+  '脉络': { hanzi: '理清文章的脉络有助于深刻把握作者的中心思想。', pinyin: 'Lǐqīng wénzhāng de màiluò yǒuzhù yú shēnkè bǎwò zuòzhě de zhōngxīn sīxiǎng.', english: 'Clarifying the article\'s thread helps grasp the author\'s core message.' },
+  '融会贯通': { hanzi: '多读书、多思考，才能把所学知识融会贯通。', pinyin: 'Duō dúshū, duō sīkǎo, cái néng bǎ suǒxué zhīshi rónghuì-guàntōng.', english: 'Reading and thinking more allows one to synthesize and master learned knowledge.' },
+  '未雨绸缪': { hanzi: '面对未知的变化，我们要未雨绸缪，提早做好规划。', pinyin: 'Miànduì wèizhī de biànhuà, wǒmen yào wèiyǔ-chóumóu, tízǎo zuòhǎo guīhuà.', english: 'Facing unknown changes, we must take precautions beforehand and plan early.' },
+  '潜移默化': { hanzi: '良好的家庭环境在潜移默化中塑造着青少年的品格。', pinyin: 'Liánghǎo de jiātíng huánjìng zài qiányí-mòhuà zhōng sùzàozhe qīngshàonián de pǐngé.', english: 'A good family environment shapes youth character imperceptibly.' },
 };
 
 /**
- * Fallback contextual sentence templates based on category or part of speech
+ * Fallback generator strictly conditioned on the word's HSK level:
+ * - HSK 1: Very simple (3-5 words), no complex grammar or obscure terms.
+ * - HSK 2: Everyday conversational phrases (5-8 words).
+ * - HSK 3: Intermediate level.
+ * - HSK 4+: Advanced level.
  */
 function createSmartSentence(word: HanziWord): ExampleSentence {
   const hz = word.hanzi;
   const py = word.pinyin;
   const eng = word.english;
+  const level = word.hskLevel || 1;
   const cat = word.category?.toLowerCase() || '';
 
-  if (cat.includes('verb') || cat.includes('daily') || cat.includes('activit')) {
+  // HSK 1: Ultra simple (3-6 characters), basic grammar (S + V + O or S + Adj)
+  if (level === 1) {
+    if (cat.includes('food') || cat.includes('drink')) {
+      return {
+        hanzi: `我喜欢吃${hz}。`,
+        pinyin: `Wǒ xǐhuan chī ${py}.`,
+        english: `I like to eat ${eng}.`,
+      };
+    }
+    if (cat.includes('verb')) {
+      return {
+        hanzi: `我想${hz}。`,
+        pinyin: `Wǒ xiǎng ${py}.`,
+        english: `I want to ${eng}.`,
+      };
+    }
+    if (cat.includes('adj')) {
+      return {
+        hanzi: `这个很${hz}。`,
+        pinyin: `Zhè gè hěn ${py}.`,
+        english: `This is very ${eng}.`,
+      };
+    }
+    if (cat.includes('people') || cat.includes('family')) {
+      return {
+        hanzi: `他是我的${hz}。`,
+        pinyin: `Tā shì wǒ de ${py}.`,
+        english: `He is my ${eng}.`,
+      };
+    }
+    if (cat.includes('place')) {
+      return {
+        hanzi: `我在${hz}。`,
+        pinyin: `Wǒ zài ${py}.`,
+        english: `I am at ${eng}.`,
+      };
+    }
     return {
-      hanzi: `在日常学习生活中，我们经常需要${hz}。`,
-      pinyin: `Zài rìcháng xuéxí shēnghuó zhōng, wǒmen jīngcháng xūyào ${py}.`,
-      english: `In our daily study and life, we often need to ${eng}.`,
+      hanzi: `这是${hz}。`,
+      pinyin: `Zhè shì ${py}.`,
+      english: `This is ${eng}.`,
     };
   }
 
-  if (cat.includes('adj') || cat.includes('feeling')) {
+  // HSK 2: Simple daily conversational phrases (5-8 characters)
+  if (level === 2) {
+    if (cat.includes('verb') || cat.includes('activit') || cat.includes('sport')) {
+      return {
+        hanzi: `我们一起${hz}吧。`,
+        pinyin: `Wǒmen yìqǐ ${py} ba.`,
+        english: `Let us ${eng} together.`,
+      };
+    }
+    if (cat.includes('adj') || cat.includes('color')) {
+      return {
+        hanzi: `我觉得这个很${hz}。`,
+        pinyin: `Wǒ juéde zhè gè hěn ${py}.`,
+        english: `I think this is very ${eng}.`,
+      };
+    }
+    if (cat.includes('food')) {
+      return {
+        hanzi: `我想买一些${hz}。`,
+        pinyin: `Wǒ xiǎng mǎi yìxiē ${py}.`,
+        english: `I want to buy some ${eng}.`,
+      };
+    }
+    if (cat.includes('place') || cat.includes('travel')) {
+      return {
+        hanzi: `我们去${hz}看一看。`,
+        pinyin: `Wǒmen qù ${py} kàn yí kàn.`,
+        english: `Let us go visit the ${eng}.`,
+      };
+    }
     return {
-      hanzi: `大家都认为这个做法非常${hz}。`,
-      pinyin: `Dàjiā dōu rènwéi zhè gè zuòfǎ fēicháng ${py}.`,
-      english: `Everyone considers this approach to be very ${eng}.`,
+      hanzi: `我们在学校学了“${hz}”。`,
+      pinyin: `Wǒmen zài xuéxiào xué le "${py}".`,
+      english: `We learned "${hz}" (${eng}) at school.`,
     };
   }
 
-  if (cat.includes('place') || cat.includes('travel')) {
+  // HSK 3: Intermediate clear sentences
+  if (level === 3) {
+    if (cat.includes('verb')) {
+      return {
+        hanzi: `多练习${hz}对学中文很有用。`,
+        pinyin: `Duō liànxí ${py} duì xué zhōngwén hěn yǒuyòng.`,
+        english: `Practicing to ${eng} more is very useful for learning Chinese.`,
+      };
+    }
     return {
-      hanzi: `我们明天打算前往${hz}参观交流。`,
-      pinyin: `Wǒmen míngtiān dǎsuàn qiánwǎng ${py} cānguān jiāoliú.`,
-      english: `Tomorrow we plan to travel to the ${eng} for a visit.`,
+      hanzi: `老师向大家解释了“${hz}”的意思。`,
+      pinyin: `Lǎoshī xiàng dàjiā jiěshì le "${py}" de yìsi.`,
+      english: `The teacher explained the meaning of "${hz}" (${eng}) to everyone.`,
     };
   }
 
-  if (cat.includes('food') || cat.includes('object')) {
+  // HSK 4: Upper-intermediate sentences
+  if (level === 4) {
     return {
-      hanzi: `桌面摆放着精致新鲜的${hz}。`,
-      pinyin: `Zhuōmiàn bǎifàngzhe jīngzhì xīnxīan de ${py}.`,
-      english: `Exquisite and fresh ${eng} is arranged on the table.`,
+      hanzi: `掌握“${hz}”这个词对中文表达很有帮助。`,
+      pinyin: `Zhǎngwò "${py}" zhè gè cí duì zhōngwén biǎodá hěn yǒu bāngzhù.`,
+      english: `Mastering the word "${hz}" (${eng}) is helpful for Chinese expression.`,
     };
   }
 
-  if (cat.includes('family') || cat.includes('people') || cat.includes('social')) {
-    return {
-      hanzi: `这位可敬的${hz}总是真诚地关照着周围的人。`,
-      pinyin: `Zhè wèi kějìng de ${py} zǒngshì zhēnchéng de guānzhàozhe zhōuwéi de rén.`,
-      english: `This respectable ${eng} always genuinely cares for those around them.`,
-    };
-  }
-
-  // General high quality contextual template
+  // HSK 5+: Advanced natural sentences
   return {
-    hanzi: `掌握“${hz}”这个词的用法对学好汉语很有帮助。`,
-    pinyin: `Zhǎngwò "${py}" zhè gè cí de yòngfǎ duì xuéhǎo hànyǔ hěn yǒu bāngzhù.`,
-    english: `Mastering the usage of "${hz}" (${eng}) is very helpful for learning Chinese well.`,
+    hanzi: `在日常工作与交流中，我们经常使用“${hz}”。`,
+    pinyin: `Zài rìcháng gōngzuò yǔ jiāoliú zhōng, wǒmen jīngcháng shǐyòng "${py}".`,
+    english: `In daily work and communication, we often use "${hz}" (${eng}).`,
   };
 }
 
 /**
- * Returns a high-quality example sentence for any HanziWord (from curated pool or contextual generator)
+ * Returns a level-appropriate example sentence for any HanziWord (from curated pool or contextual generator)
  */
 export function getExampleSentence(word: HanziWord): ExampleSentence {
   if (word.exampleSentence) {

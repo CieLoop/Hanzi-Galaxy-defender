@@ -135,7 +135,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({
           id="start-flashcard-mode-btn"
           type="button"
           onClick={() => onStartGame('flashcards')}
-          className="w-full mb-4 p-3.5 sm:p-4 bg-gradient-to-r from-emerald-950/80 via-slate-900 to-teal-950/80 hover:from-emerald-900/90 hover:to-teal-900/90 border border-emerald-500/40 hover:border-emerald-400 rounded-2xl text-left shadow-lg transition active:scale-98 flex items-center justify-between group cursor-pointer"
+          className="w-full mb-4 p-3.5 sm:p-4 bg-slate-800 hover:bg-slate-700/80 border border-emerald-500/40 hover:border-emerald-400 rounded-2xl text-left shadow-md transition active:scale-98 flex items-center justify-between group cursor-pointer"
         >
           <div className="flex items-center gap-3">
             <div className="p-2.5 sm:p-3 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 group-hover:scale-105 transition">
